@@ -1,36 +1,36 @@
 import React from 'react';
 import { BaseComponent } from './utils.js';
 
-import './LangSelector.css';
+import './compiled/LangSelector.css';
 
 
 class LangSelector extends BaseComponent {
 
   constructor(props) {
     super(props);
-    this._bind('handleChange');
+    this._bind('handleClick');
   }
 
-  handleChange(event) {
-    this.props.updateLang(event.target.value);
+  handleClick(event, lang) {
+    event.preventDefault();
+    this.props.updateLangId(lang.id);
   }
 
   render() {
-    let presets = this.props.presets;
-    let lang_id = this.props.lang_id;
-
-    let options = presets.map(p => {
-      return (
-        <option value={p.id} key={p.id}>{p.name}</option>
-      );
-    });
+    let langs = this.props.langs;
 
     return (
       <div className="LangSelector widget">
-        Choose language/library: &nbsp;
-        <select value={lang_id} onChange={this.handleChange}>
-          {options}
-        </select>
+        <span className="label">Choose language/library:</span>
+        <span className="options">
+          {langs.map(l => (
+            <a href={'#' + l.id}
+               key={l.id}
+               onClick={(e) => this.handleClick(e, l)}>
+              {l.name}
+            </a>
+          ))}
+        </span>
       </div>
     );
   }

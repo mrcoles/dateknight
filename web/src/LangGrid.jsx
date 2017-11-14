@@ -6,7 +6,6 @@ import './LangGrid.css';
 
 class LangGrid extends BaseComponent {
   render() {
-    let formats = this.props.formats;
     let lang = this.props.lang;
 
     let last_cat = null;
@@ -18,17 +17,17 @@ class LangGrid extends BaseComponent {
         last_cat = fmt.cat;
         group_counter = 0;
         rows.push(
-          <div className="row row-header" key={fmt.cat + '-' + fmt.id + '-header'}>
+          <div className="row row-header" key={fmt.cat + '-' + fmt.code + '-header'}>
             {fmt.cat}
           </div>
         );
       }
 
       let row_classes = ['row'];
-      row_classes.push(group_counter % 2 == 0 ? 'odd' : 'even');
+      row_classes.push(group_counter % 2 === 0 ? 'odd' : 'even');
       
       rows.push(
-        <div className={row_classes.join(' ')} key={fmt.cat + '-' + fmt.id}>
+        <div className={row_classes.join(' ')} key={fmt.cat + '-' + fmt.code}>
           <div className="item item-code">{fmt.code}</div>
           <div className="item item-info">{fmt.info}</div>
           <div className="item">{fmt.example}</div>

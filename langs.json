@@ -273,7 +273,7 @@
         "code": "G",
         "example": "'0' to '23'",
         "info": "Hour, 24-hour format without leading zeros.."
-      },          
+      },
       {
         "cat": "hour",
         "id": "H",
@@ -371,6 +371,273 @@
         "code": "w",
         "example": "'0' (Sunday) to '6' (Saturday)",
         "info": "Day of the week, digits without leading zeros."
+      }
+    ]
+  },
+  {
+    "id": "momentjs",
+    "name": "MomentJS",
+    "docs": "https://momentjs.com/docs/#/displaying/format/",
+    "example": "moment().format();                                // \"2014-09-08T08:02:17-05:00\" (ISO 8601)\nmoment().format(\"dddd, MMMM Do YYYY, h:mm:ss a\"); // \"Sunday, February 14th 2010, 3:25:50 pm\"\nmoment().format(\"ddd, hA\");                       // \"Sun, 3PM\"\nmoment('gibberish').format('YYYY MM DD');         // \"Invalid date\"'",
+    "notes": "(i) should I make the category the info and the 'Output' the example? (ii) I like moments organization of stuff, maybe start using this? (iii) change microsecond cat to fractional seconds? (iv) what about z or zz both being valid (v) what about some of the ISO and Unix stuff? (vi) explanation of iso weeknumber (https://stackoverflow.com/a/6090287/376489)",
+    "formats": [
+      {
+        "cat": "year",
+        "id": "Y",
+        "code": "YYYY",
+        "info": "1970 1971 ... 2029 2030"
+      },
+      {
+        "cat": "year",
+        "id": "y",
+        "code": "YY",
+        "info": "70 71 ... 29 30"
+      },
+      {
+        "cat": "year",
+        "id": "?",
+        "code": "Y",
+        "info": "1970 1971 ... 9999 +10000 +10001 \nNote: This complies with the ISO 8601 standard for dates past the year 9999"
+      },
+      {
+        "cat": "month",
+        "id": "B",
+        "code": "MMMM",
+        "info": "January February ... November December"
+      },
+      {
+        "cat": "month",
+        "id": "b",
+        "code": "MMM",
+        "info": "Jan Feb ... Nov Dec"
+      },
+      {
+        "cat": "month",
+        "id": "-m",
+        "code": "M",
+        "info": "1 2 ... 11 12"
+      },
+      {
+        "cat": "month",
+        "id": "m",
+        "code": "MM",
+        "info": "01 02 ... 11 12"
+      },
+      {
+        "cat": "month",
+        "id": "?",
+        "code": "Mo",
+        "info": "1st 2nd ... 11th 12th"
+      },
+      {
+        "cat": "quarter",
+        "id": "?",
+        "code": "Q",
+        "info": "1 2 3 4"
+      },
+      {
+        "cat": "quarter",
+        "id": "?",
+        "code": "Qo",
+        "info": "1st 2nd 3rd 4th"
+      },
+      {
+        "cat": "day",
+        "id": "-d",
+        "code": "D",
+        "info": "1 2 ... 30 31"
+      },
+      {
+        "cat": "day",
+        "id": "d",
+        "code": "DD",
+        "info": "01 02 ... 30 31"
+      },
+      {
+        "cat": "day",
+        "id": "?",
+        "code": "Do",
+        "info": "1st 2nd ... 30th 31st"
+      },
+      {
+        "cat": "hour",
+        "id": "-H",
+        "code": "H",
+        "info": "0 1 ... 22 23"
+      },
+      {
+        "cat": "hour",
+        "id": "H",
+        "code": "HH",
+        "info": "00 01 ... 22 23"
+      },
+      {
+        "cat": "hour",
+        "id": "-I",
+        "code": "h",
+        "info": "1 2 ... 11 12"
+      },
+      {
+        "cat": "hour",
+        "id": "I",
+        "code": "hh",
+        "info": "01 02 ... 11 12"
+      },
+      {
+        "cat": "hour",
+        "id": "?",
+        "code": "k",
+        "info": "1 2 ... 23 24"
+      },
+      {
+        "cat": "hour",
+        "id": "?",
+        "code": "kk",
+        "info": "01 02 ... 23 24"
+      },
+      {
+        "cat": "ampm",
+        "id": "p",
+        "code": "A",
+        "info": "AM PM"
+      },
+      {
+        "cat": "ampm",
+        "id": "?",
+        "code": "a",
+        "info": "am pm"
+      },
+      {
+        "cat": "minute",
+        "id": "-M",
+        "code": "m",
+        "info": "0 1 ... 58 59"
+      },
+      {
+        "cat": "minute",
+        "id": "M",
+        "code": "mm",
+        "info": "00 01 ... 58 59"
+      },
+      {
+        "cat": "second",
+        "id": "-S",
+        "code": "s",
+        "info": "0 1 ... 58 59"
+      },
+      {
+        "cat": "second",
+        "id": "S",
+        "code": "ss",
+        "info": "00 01 ... 58 59"
+      },
+      {
+        "cat": "microsecond",
+        "id": "f",
+        "code": "SSSSSS",
+        "info": "000000 000001 ... 999998 999999"
+      },
+      {
+        "cat": "timezone",
+        "id": "Z",
+        "code": "z",
+        "info": "EST CST ... MST PST\nNote: as of 1.6.0, the z/zz format tokens have been deprecated from plain moment objects. Read more about it here. However, they do work if you are using a specific time zone with the moment-timezone addon."
+      },
+      {
+        "cat": "timezone",
+        "id": "?",
+        "code": "Z",
+        "info": "-07:00 -06:00 ... +06:00 +07:00"
+      },
+      {
+        "cat": "timezone",
+        "id": "z",
+        "code": "ZZ",
+        "info": "-0700 -0600 ... +0600 +0700"
+      },
+      {
+        "cat": "weeknumber",
+        "id": "W",
+        "code": "w",
+        "info": "1 2 ... 52 53"
+      },
+      {
+        "cat": "weeknumber",
+        "id": "?",
+        "code": "wo",
+        "info": "1st 2nd ... 52nd 53rd"
+      },
+      {
+        "cat": "weeknumber",
+        "id": "?",
+        "code": "ww",
+        "info": "01 02 ... 52 53"
+      },
+      {
+        "cat": "weeknumber",
+        "id": "W",
+        "code": "W",
+        "info": "(ISO) 1 2 ... 52 53"
+      },
+      {
+        "cat": "weeknumber",
+        "id": "?",
+        "code": "Wo",
+        "info": "(ISO) 1st 2nd ... 52nd 53rd"
+      },
+      {
+        "cat": "weeknumber",
+        "id": "?",
+        "code": "WW",
+        "info": "(ISO) 01 02 ... 52 53"
+      },
+      {
+        "cat": "dayofyear",
+        "id": "-j",
+        "code": "DDD",
+        "info": "1 2 ... 364 365"
+      },
+      {
+        "cat": "dayofyear",
+        "id": "?",
+        "code": "DDDo",
+        "info": "1st 2nd ... 364th 365th"
+      },
+      {
+        "cat": "dayofyear",
+        "id": "j",
+        "code": "DDDD",
+        "info": "001 002 ... 364 365"
+      },
+      {
+        "cat": "weekday",
+        "id": "w",
+        "code": "d",
+        "info": "0 1 ... 5 6"
+      },
+      {
+        "cat": "weekday",
+        "id": "?",
+        "code": "do",
+        "info": "0th 1st ... 5th 6th"
+      },
+      {
+        "cat": "weekday",
+        "id": "?",
+        "code": "dd",
+        "info": "Su Mo ... Fr Sa"
+      },
+      {
+        "cat": "weekday",
+        "id": "a",
+        "code": "ddd",
+        "info": "Sun Mon ... Fri Sat"
+      },
+      {
+        "cat": "weekday",
+        "id": "A",
+        "code": "dddd",
+        "info": "Sunday Monday ... Friday Saturday"
       }
     ]
   }

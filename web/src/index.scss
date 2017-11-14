@@ -16,10 +16,29 @@ h1 {
     margin: 0 0 2.0rem;
 }
 
+h2 {
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    margin: 0 0 2.0rem;
+}
+
+h2 {
+    font-size: 1.6rem;
+    line-height: 2.0rem;
+    margin: 0 0 2.0rem;
+}
+
 .widget {
   margin-bottom: 2.0rem;
 }
 
 .hide {
   display: none;
+}
+
+.svg-icon {
+  width: 1.0rem;
+  height: 1.0rem;
+  vertical-align: middle;
+  margin-left: 0.2em;
 }

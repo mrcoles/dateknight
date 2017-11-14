@@ -1,18 +1,15 @@
 import React from 'react';
 import { BaseComponent } from './utils.js';
 
-import './App.css';
-
-import LangSelector from './LangSelector.jsx';
-import LangDetails from './LangDetails.jsx';
-import LangGrid from './LangGrid.jsx';
+import './compiled/App.css';
+import ReferenceView from './ReferenceView.jsx';
+import ConvertView from './ConvertView.jsx';
 
 import FORMATS from './data/formats.js';
-import _presets from './data/presets.js';
+import _langs from './data/langs.js';
 
 
-const PRESETS = _presets.filter(x => x.formats !== undefined);
-const DEFAULT_LANG_ID = 'python';
+const LANGS = _langs.filter(x => x.formats !== undefined);
 
 
 class App extends BaseComponent {
@@ -21,34 +18,20 @@ class App extends BaseComponent {
 
     this.state = {
       formats: FORMATS,
-      presets: PRESETS,
-      lang_id: DEFAULT_LANG_ID
+      langs: LANGS,
     };
-
-    this._bind('updateLang');
-  }
-
-  updateLang(lang_id) {
-    this.setState({lang_id: lang_id});
   }
 
   render() {
     let formats = this.state.formats;
-    let presets = this.state.presets;
-    console.log('formats?', formats); //REM
-    console.log('presets?', presets); //REM
-    console.log('lang_id?', this.state.lang_id); //REM
-
-    let lang = presets.filter(x => x.id === this.state.lang_id)[0];
+    let langs = this.state.langs;
 
     return (
       <div className="App">
         <h1>Date Knight: <small>a universal date time string formatting reference</small></h1>
-        <LangSelector presets={presets}
-                      lang_id={this.state.lang_id}
-                      updateLang={this.updateLang} />
-        <LangDetails lang={lang} />
-        <LangGrid formats={formats} lang={lang} />
+        <ReferenceView langs={langs} formats={formats} />
+        <ConvertView langs={langs} />
+        <br /><br /><br /><br />
       </div>
     );
   }

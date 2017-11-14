@@ -1,6 +1,9 @@
 import React from 'react';
 import { BaseComponent } from './utils.js';
 
+import './compiled/LangDetails.css';
+import new_window_svg from './svg/new-window.svg';
+
 
 class LangDetails extends BaseComponent {
   render() {
@@ -15,7 +18,13 @@ class LangDetails extends BaseComponent {
 
     return (
       <div className="LangDetails widget">
-        {lang.name} - <a target="_blank" href={lang.docs}>{lang.docs}</a>
+        <h2>{lang.name}</h2>
+        <p>
+          <a target="_blank" href={lang.docs}>
+            {lang.docs}
+            <img className="svg-icon svg-new-window" src={new_window_svg} alt="opens in new window" />
+          </a>
+        </p>
       </div>
     );
   }

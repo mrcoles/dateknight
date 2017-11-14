@@ -1,0 +1,41 @@
+
+.ConvertView {
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 -0.5rem;
+  }
+
+  .item {
+    margin: 0 0.5rem;
+  }
+
+  .item-result {
+    width: 100%;
+    margin-top: 2.0rem;
+  }
+    
+  label {
+    display: inline-block;
+    margin-right: 0.5rem;
+
+    &.first {
+      min-width: 6.0rem;
+    }
+  }
+
+  input[type=text] {
+    width: 20.0rem;
+
+    &.result-text {
+        width: 40.0rem;
+    }
+  }
+
+  .svg-swap {
+      width: 1.8rem;
+      height: 1.8rem;
+  }
+}
