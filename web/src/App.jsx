@@ -31,7 +31,10 @@ class App extends BaseComponent {
         <div className="container">
           <h1>
             Date Knight
-            <small>A universal date time string formatting reference</small>
+            <small>
+              A universal date time string {' '}
+              <span className="nowrap">formatting reference</span>
+            </small>
           </h1>
           <ReferenceView langs={langs} formats={formats} />
           <ConvertView langs={langs} />

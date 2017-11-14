@@ -37,7 +37,7 @@ h1 {
     small {
         display: block;
         font-size: 1.4rem;
-        line-height: 3.0rem;
+        line-height: 1.6;
         font-style: italic;
     }
 
@@ -64,6 +64,10 @@ h2 {
 
 .hide {
   display: none;
+}
+
+.nowrap {
+    white-space: nowrap;
 }
 
 .svg-icon {
