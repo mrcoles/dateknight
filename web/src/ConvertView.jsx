@@ -97,7 +97,7 @@ class ConvertView extends utils.BaseComponent {
     ));
 
     converted_values.forEach(({lang, code}) => elts.push(
-      console.log('?', lang.id, code) || (
+      (
         <label className="result-label"
                key={lang.id + '-label'}>
           {lang.name}
