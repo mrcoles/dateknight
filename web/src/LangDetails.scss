@@ -1,3 +1,12 @@
 
 .LangDetails {
+    .example {
+        white-space: pre;
+        font-family: monaco, monospace;
+        background: #f9f9f9;
+        margin: 0 -1.0rem;
+        padding: 1.0rem;
+        font-size: 1.1rem;
+        overflow-x: scroll;
+    }
 }

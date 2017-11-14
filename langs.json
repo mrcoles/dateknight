@@ -3,6 +3,7 @@
     "id": "python",
     "name": "Python",
     "docs": "http://strftime.org",
+    "example": "import datetime\ndatetime.datetime(2013, 9, 30, 7, 6, 5).strftime('%a %d %b %Y')",
     "formats": [
       {
         "cat": "year",
@@ -210,6 +211,7 @@
     "name": "Django",
     "docs": "https://docs.djangoproject.com/en/1.11/ref/templates/builtins/#date",
     "notes": "There are some extra press style conversions, like AP month abbreviations, etc. that are not included here, yet.",
+    "example": "{{ value|date:\"D d M Y\" }}",
     "formats": [
       {
         "cat": "year",

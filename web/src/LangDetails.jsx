@@ -9,15 +9,8 @@ class LangDetails extends BaseComponent {
   render() {
     let lang = this.props.lang;
 
-    if (!lang) {
-      return (
-        <div className="LangDetails hide">
-        </div>
-      );
-    }
-
     return (
-      <div className="LangDetails widget">
+      <div className={'LangDetails widget ' + (lang ? '' : 'hide')}>
         <h2>{lang.name}</h2>
         <p>
           <a target="_blank" href={lang.docs}>
@@ -25,6 +18,7 @@ class LangDetails extends BaseComponent {
             <img className="svg-icon svg-new-window" src={new_window_svg} alt="opens in new window" />
           </a>
         </p>
+        <div className={'example ' + (lang.example ? '' : 'hide')}>{lang.example}</div>
       </div>
     );
   }
