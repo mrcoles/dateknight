@@ -77,7 +77,9 @@ class ConvertView extends utils.BaseComponent {
                  name="code"
                  value={code}
                  onChange={this.handleChange} />
+          {' '}
           <label>from</label>
+          {' '}
           <select name="from_lang_id"
                   value={from_lang.id}
                   onChange={this.handleChange}>

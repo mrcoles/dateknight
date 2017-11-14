@@ -14,14 +14,10 @@
       grid-column: 2 / 4;
   }
 
-  .convert-form {
-      input, label {
-          margin-right: 1.0rem;
-      }
-  }
-
   .base-code {
     width: 25.0rem;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .result-text input {

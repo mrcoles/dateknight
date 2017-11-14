@@ -1,7 +1,7 @@
 import React from 'react';
 import { BaseComponent } from './utils.js';
 
-import './LangGrid.css';
+import './compiled/LangGrid.css';
 
 
 class LangGrid extends BaseComponent {
@@ -30,7 +30,7 @@ class LangGrid extends BaseComponent {
         <div className={row_classes.join(' ')} key={fmt.cat + '-' + fmt.code}>
           <div className="item item-code">{fmt.code}</div>
           <div className="item item-info">{fmt.info}</div>
-          <div className="item">{fmt.example}</div>
+          <div className="item item-example">{fmt.example}</div>
         </div>
       );
 

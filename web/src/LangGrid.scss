@@ -1,0 +1,45 @@
+
+/*
+// header #039be5 #0277bd
+// odd #fff
+// even #e1f5fe #b3e5fc
+*/
+
+.LangGrid {
+
+    .row {
+        display: grid;
+        grid-template-columns: 8.0rem 1fr 10.0rem;
+        grid-gap: 2.0rem;
+        margin: 0 -1.0rem;
+        padding: 1.0rem;
+
+        @media (max-width: 480px) {
+            grid-template-columns: 5.0rem 1fr 6.0rem;
+        }
+    }
+
+    .row-header {
+        display: block;
+        font-weight: bold;
+        background: #039be5;
+        color: #fff;
+        margin-top: 3.0rem;
+    }
+
+    .row.even {
+        background: #e1f5fe;
+    }
+    
+    .item {
+  
+    }
+
+    .item-code {
+        white-space: nowrap;
+    }
+
+    .item-example {
+        word-break: break-word;
+    }
+}

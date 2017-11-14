@@ -11,13 +11,13 @@ class LangDetails extends BaseComponent {
 
     return (
       <div className={'LangDetails widget ' + (lang ? '' : 'hide')}>
-        <h2>{lang.name}</h2>
-        <p>
-          <a target="_blank" href={lang.docs}>
-            {lang.docs}
+        <div className="header">
+          <h2>{lang.name}</h2>
+          <a className="docs-link" target="_blank" href={lang.docs}>
+            docs
             <img className="svg-icon svg-new-window" src={new_window_svg} alt="opens in new window" />
           </a>
-        </p>
+        </div>
         <div className={'example ' + (lang.example ? '' : 'hide')}>{lang.example}</div>
       </div>
     );

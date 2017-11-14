@@ -1,5 +1,20 @@
 
 .LangDetails {
+    $half_gap: 0.25rem;
+
+    .header {
+        display: flex;
+        justify-content: flex-start;
+        margin: 0 -$half_gap;
+
+        h2, a {
+            padding: 0 $half_gap;
+        }
+    }
+    .docs-link {
+        word-break: break-word; // breaks word if necessary
+    }
+
     .example {
         white-space: pre;
         font-family: monaco, monospace;

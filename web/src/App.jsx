@@ -28,10 +28,15 @@ class App extends BaseComponent {
 
     return (
       <div className="App">
-        <h1>Date Knight: <small>a universal date time string formatting reference</small></h1>
-        <ReferenceView langs={langs} formats={formats} />
-        <ConvertView langs={langs} />
-        <br /><br /><br /><br />
+        <div className="container">
+          <h1>
+            Date Knight
+            <small>A universal date time string formatting reference</small>
+          </h1>
+          <ReferenceView langs={langs} formats={formats} />
+          <ConvertView langs={langs} />
+          <br /><br /><br /><br />
+        </div>
       </div>
     );
   }
