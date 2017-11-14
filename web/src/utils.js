@@ -11,119 +11,54 @@ export class BaseComponent extends Component {
 }
 
 
-const TERM_KEY = ''; // termination key for language trees
+export function convertCode(code, from_lang, to_langs) {
+  let formats = _extractFormats(from_lang);
 
+  return to_langs.map(to_lang => {
+    let matches = _findMatches(code, formats);
+    let parsed_code = _parseMatches(code, matches);
+    let result = _convertMatch(parsed_code, to_lang);
 
-export function convertCode(code, from_lang, to_lang) {
-  let search_tree = _makeLangTree(from_lang);
-  let matches = _findMatches(code, search_tree);
-  let parsed_code = _parseMatches(code, matches);
-  let result = _convertMatch(parsed_code, to_lang);
-
-  return result;
-}
-
-
-function _makeLangTree(lang) {
-  /*
-     ### Python Year and Hour
-
-     TODO - encode escaping with this approach?
-
-     {
-       '%': {
-         'Y': {
-           '': 'Y'
-         },
-         'H': {
-           '': 'H'
-         },
-       }
-     }
-
-     ### MomentJS month
-
-     Needs to handle codes with the same prefix
-
-     {
-       'M': {
-         'M': {
-           'M': {
-             'M': {
-               '': 'B',
-             },
-             '': 'b',
-           },
-           '': 'm'
-         },
-         '': '-m'
-       }
-     }
-   */
-  let result = {};
-
-  lang.formats.forEach(fmt => {
-    let cur_leaf = result;
-    for (let i = 0; i < fmt.code.length; i++) {
-      let char = fmt.code.charAt(i);
-      let next_leaf = cur_leaf[char];
-      if (next_leaf === undefined) {
-        next_leaf = {};
-        cur_leaf[char] = next_leaf;
-      }
-      cur_leaf = next_leaf;
-    }
-    cur_leaf[TERM_KEY] = fmt.id;
+    return {lang: to_lang, code: result};
   });
-
-  return result;
 }
 
 
-function _findMatches(code, search_tree) {
+function _extractFormats(lang) {
+  // Extract, copy, and sort `lang.formats`
+  let formats = lang.formats.slice();
+  formats.sort((a, b) => b.code.length - a.code.length);
+  return formats;
+}
+
+
+function _findMatches(code, formats) {
+  // Check each index of `code` for a matching `code` in
+  // `formats`, looking for the longest ones first.
+  // Returns an array of matches with {start, end, value, format_id}
+  //
   let matches = [];
 
-  for (let char_i = 0; char_i < code.length; char_i++) {
-    // short-circuit if not a match
-    if (search_tree[code.charAt(char_i)] === undefined) {
-      continue;
-    }
+  let code_i = 0;
 
-    // for each index in `code`, search for a match starting there
-    let longest_termination = undefined;
-    let active_searches = [
-      {
-        start: char_i,
-        end: char_i,
-        value: '',
-        tree: search_tree
-      }
-    ];
+  const _findMatch = (fmt) => (
+    code.substring(code_i, code_i + fmt.code.length) === fmt.code
+  );
 
-    while (active_searches.length) {
-      let sch = active_searches.shift();
+  while (code_i < code.length) {
+    let m = formats.find(_findMatch);
 
-      let sch_char = code.charAt(sch.end);
-      let subtree = sch.tree[sch_char];
-      if (subtree !== undefined) {
-        active_searches.push({
-          start: sch.start,
-          end: sch.end + 1,
-          value: sch.value + sch_char,
-          tree: subtree
-        });
-      }
-
-      if (sch.tree[TERM_KEY] !== undefined) {
-        longest_termination = sch;
-        longest_termination.format_id = sch.tree[TERM_KEY];
-      }
-    }
-
-    if (longest_termination !== undefined) {
-      // move the index forward, so we can look after the termination
-      char_i = longest_termination.end - 1;
-      matches.push(longest_termination);
+    if (m) {
+      let end = code_i + m.code.length;
+      matches.push({
+        start: code_i,
+        end: end,
+        value: m.code,
+        format_id: m.id
+      });
+      code_i += m.code.length;
+    } else {
+      code_i++;
     }
   }
 

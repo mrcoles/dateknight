@@ -1,37 +1,38 @@
 
 .ConvertView {
   .items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0 -0.5rem;
+      display: grid;
+      grid-template-columns: 0fr  1fr 0fr;
+      grid-gap: 1.0rem 1.0rem;
+      margin-top: 1.0rem;
   }
 
-  .item {
-    margin: 0 0.5rem;
+  .col13 {
+      grid-column: 1 / 4;
+  }
+  .col23 {
+      grid-column: 2 / 4;
+  }
+
+  .convert-form {
+      input, label {
+          margin-right: 1.0rem;
+      }
+  }
+
+  .base-code {
+    width: 25.0rem;
+  }
+
+  .result-text input {
+      box-sizing: border-box;
+      min-width: 100%;
+      width: 100%;
   }
 
   .item-result {
     width: 100%;
     margin-top: 2.0rem;
-  }
-    
-  label {
-    display: inline-block;
-    margin-right: 0.5rem;
-
-    &.first {
-      min-width: 6.0rem;
-    }
-  }
-
-  input[type=text] {
-    width: 20.0rem;
-
-    &.result-text {
-        width: 40.0rem;
-    }
   }
 
   .svg-swap {
