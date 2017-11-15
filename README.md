@@ -9,22 +9,22 @@ A universal date time formatting reference.
 
 In order to run the project underneath `./web/` you need to:
 
-\1. Copy the json files into the web project:
+1.  Copy the json files into the web project:
 
-```
-bash copy_json.sh
-```
+    ```
+    bash copy_json.sh
+    ```
 
-\2. Initialize the project:
+2.  Initialize the project:
 
-```
-cd web/
-npm install
-```
+    ```
+    cd web/
+    npm install
+    ```
 
-\3. Run the dev server (and sass watcher):
+3.  Run the dev server (and sass watcher):
 
-```
-npm start
-```
+    ```
+    npm start
+    ```
 

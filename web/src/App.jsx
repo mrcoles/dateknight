@@ -38,7 +38,16 @@ class App extends BaseComponent {
           </h1>
           <ReferenceView langs={langs} formats={formats} />
           <ConvertView langs={langs} />
-          <br /><br /><br /><br />
+          <br /><br />
+          <div>
+            <strong>
+              <a target="_blank"
+                 href="https://github.com/mrcoles/dateknight">
+                View source on Github &raquo;
+              </a>
+            </strong>
+          </div>
+          <br /><br />
         </div>
       </div>
     );
