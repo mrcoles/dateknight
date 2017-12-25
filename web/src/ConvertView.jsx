@@ -12,7 +12,7 @@ class ConvertView extends utils.BaseComponent {
 
     this.state = {
       code: '%Y-%m-%d %H:%M:%S',
-      from_lang_id: props.langs[0].id
+      from_lang_id: 'python'
     };
 
     this._bind('handleChange', 'handleSwap');
@@ -33,7 +33,7 @@ class ConvertView extends utils.BaseComponent {
       let from_lang = this.props.langs.find(l => l.id === this.state.from_lang_id);
       let to_lang = this.props.langs.find(l => l.id === value);
       let converted_values = utils.convertCode(this.state.code, from_lang, [to_lang]);
-      new_state.code = converted_values[0].code;
+      new_state.code = converted_values[0].text;
     }
 
     this.setState(new_state);
@@ -73,7 +73,7 @@ class ConvertView extends utils.BaseComponent {
       (
         <div className="convert-form col23"
              key={'convert-form'}>
-          <input className="base-code" type="text"
+          <input className="base-code inputlike" type="text"
                  name="code"
                  value={code}
                  onChange={this.handleChange} />
@@ -94,27 +94,26 @@ class ConvertView extends utils.BaseComponent {
     // results
     elts.push((
       <div className="first col13" key={'convert-results'}>
-        <strong>Results:</strong>
+        <strong>Into:</strong>
       </div>
     ));
 
-    converted_values.forEach(({lang, code}) => elts.push(
+    converted_values.forEach(({lang, text, html}) => elts.push(
       (
         <label className="result-label"
-               key={lang.id + '-label'}>
+               key={lang.id + '-label'}
+               onClick={(e) => this.handleSwap(e, lang.id, text)}>
           {lang.name}
         </label>
       ),
       (
         <div className="result-text" key={lang.id + '-text'}>
-          <input type="text"
-                 readOnly={true}
-                 value={code} />
+          <div className="lang-code-html inputlike" dangerouslySetInnerHTML={{__html: html}} />
         </div>
       ),
       (
         <div className="result-swap" key={lang.id + '-swap'}>
-          <a href="#swap" onClick={(e) => this.handleSwap(e, lang.id, code)}>
+          <a href="#swap" onClick={(e) => this.handleSwap(e, lang.id, text)}>
             <img className="svg-icon svg-swap" src={swap_svg} alt="swap" />
           </a>
       </div>

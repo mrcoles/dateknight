@@ -13,7 +13,7 @@ class LangDetails extends BaseComponent {
       <div className={'LangDetails widget ' + (lang ? '' : 'hide')}>
         <div className="header">
           <h2>{lang.name}</h2>
-          <a className="docs-link" target="_blank" href={lang.docs}>
+          <a className="docs-link" target="_blank" rel="noopener noreferrer" href={lang.docs}>
             docs
             <img className="svg-icon svg-new-window" src={new_window_svg} alt="opens in new window" />
           </a>

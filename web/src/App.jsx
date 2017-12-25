@@ -41,7 +41,7 @@ class App extends BaseComponent {
           <br /><br />
           <div>
             <strong>
-              <a target="_blank"
+              <a target="_blank" rel="noopener noreferrer"
                  href="https://github.com/mrcoles/dateknight">
                 View source on Github &raquo;
               </a>

@@ -20,6 +20,10 @@
     box-sizing: border-box;
   }
 
+  .result-label {
+      cursor: pointer;
+  }
+
   .result-text input {
       box-sizing: border-box;
       min-width: 100%;
@@ -34,5 +38,33 @@
   .svg-swap {
       width: 1.8rem;
       height: 1.8rem;
+  }
+
+  .inputlike {
+      box-sizing: border-box;
+      line-height: 16px;
+      height: 20px;
+      padding: 1px 3px;
+      border: 1px solid #e0e0e0;
+      font-size: 12px;
+      font-family: monaco, courier, monospace;
+      letter-spacing: 0.07em;
+  }
+
+  .lang-code-html {
+      color: #000;
+
+      .lang-code {
+          font-weight: bold;
+          font-style: normal;
+          color: #039be5; // #0097A7; // #43A047;
+      }
+
+      .lang-unknown {
+          font-weight: normal;
+          font-style: normal;
+          color: #bdbdbd; // #E53935;
+          text-decoration: line-through;
+      }
   }
 }

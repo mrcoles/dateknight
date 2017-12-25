@@ -17,9 +17,9 @@ export function convertCode(code, from_lang, to_langs) {
   return to_langs.map(to_lang => {
     let matches = _findMatches(code, formats);
     let parsed_code = _parseMatches(code, matches);
-    let result = _convertMatch(parsed_code, to_lang);
+    let { text, html } = _convertMatch(parsed_code, to_lang);
 
-    return {lang: to_lang, code: result};
+    return {lang: to_lang, text, html};
   });
 }
 
@@ -67,6 +67,14 @@ function _findMatches(code, formats) {
 
 
 function _parseMatches(code, matches) {
+  // Returns an array of objects representing segments
+  // from `code` containing:
+  //
+  // -   start - int - start index in code (inclusive)
+  // -   end - int - end index in code (exclusive)
+  // -   value - string - the slice of code from start to end
+  // -   format_id - string (optional) - only returned if a match is
+  //                 found, this will be a global formatting id
   let result = [];
 
   let start = 0;
@@ -102,15 +110,26 @@ function _parseMatches(code, matches) {
 
 
 function _convertMatch(parsed_code, to_lang) {
+  let text = '';
+  let html = '';
 
-  return parsed_code.reduce((result, m) => {
+  parsed_code.forEach(m => {
     if (m.format_id) {
       let to_match = to_lang.formats.find(fmt => fmt.id === m.format_id);
       // TODO - offer suggestions when no equivalent is found?
-      result += to_match ? to_match.code : '<NO_EQUIVALENT_FOUND(' + m.value + ')>';
+
+      if (to_match) {
+        text += to_match.code;
+        html += `<strong class="lang-code">${to_match.code}</strong>`;
+      } else {
+        text += '<NO_EQUIV(' + m.value + ')>';
+        html += `<em class="lang-unknown">${m.value}</em>`;
+      }
     } else {
-      result += m.value;
+      text += m.value;
+      html += m.value;
     }
-    return result;
-  }, '');
+  });
+
+  return {text, html};
 }
