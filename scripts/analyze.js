@@ -5,10 +5,11 @@
 // from various langs in langs.json (and formats.json).
 //
 
+const utils = require('./utils');
 
-var formats = require('./formats.json');
-var langs = require('./langs.json');
 
+var formats = require('../formats.json');
+var langs = utils.get_langs().map(l => l.data);
 
 const _concat = (x, y) => x.concat(y);
 const _flatMap = (f, xs) => xs.map(f).reduce(_concat, []);
@@ -72,14 +73,14 @@ function compareCoverage() {
   // print out results
   const _print_arr = (name, arr) => {
     if (arr.length) {
-      console.log(`  # ${name} (${arr.length})
+      console.log(`  * ${name} (${arr.length})
 
 ${arr.map(x => '    ' + x).join('\n')}\n`);
     }
   }
 
   lang_states.forEach(ls => {
-    console.log(`# ${ls.lang}\n`);
+    console.log(`* ${ls.lang}\n`);
     _print_arr('missing', ls.missing);
     _print_arr('uniques', ls.uniques);
   });

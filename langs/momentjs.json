@@ -84,6 +84,18 @@
       "info": "1st 2nd ... 30th 31st"
     },
     {
+      "cat": "ampm",
+      "id": "p",
+      "code": "A",
+      "info": "AM PM"
+    },
+    {
+      "cat": "ampm",
+      "id": "?",
+      "code": "a",
+      "info": "am pm"
+    },
+    {
       "cat": "hour",
       "id": "-H",
       "code": "H",
@@ -118,18 +130,6 @@
       "id": "?",
       "code": "kk",
       "info": "01 02 ... 23 24"
-    },
-    {
-      "cat": "ampm",
-      "id": "p",
-      "code": "A",
-      "info": "AM PM"
-    },
-    {
-      "cat": "ampm",
-      "id": "?",
-      "code": "a",
-      "info": "am pm"
     },
     {
       "cat": "minute",

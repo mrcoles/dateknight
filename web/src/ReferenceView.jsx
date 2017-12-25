@@ -25,7 +25,6 @@ class ReferenceView extends BaseComponent {
   }
 
   render() {
-    let formats = this.props.formats;
     let langs = this.props.langs;
     let lang = langs.find(x => x.id === this.state.lang_id);
     
@@ -35,7 +34,7 @@ class ReferenceView extends BaseComponent {
                       lang_id={this.state.lang_id}
                       updateLangId={this.updateLangId} />
         <LangDetails lang={lang} />
-        <LangGrid formats={formats} lang={lang} />
+        <LangGrid lang={lang} />
       </div>
     );
   }

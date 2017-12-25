@@ -55,6 +55,16 @@
     ]
   },
   {
+    "cat": "ampm",
+    "codes": [
+      {
+        "code": "p",
+        "example": "PM",
+        "info": "Locale\u2019s equivalent of either AM or PM."
+      }
+    ]
+  },
+  {
     "cat": "hour",
     "codes": [
       {
@@ -76,16 +86,6 @@
         "code": "I",
         "example": "02",
         "info": "Hour (12-hour clock) as a zero-padded decimal number."
-      }
-    ]
-  },
-  {
-    "cat": "ampm",
-    "codes": [
-      {
-        "code": "p",
-        "example": "PM",
-        "info": "Locale\u2019s equivalent of either AM or PM."
       }
     ]
   },
