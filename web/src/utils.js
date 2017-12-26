@@ -1,5 +1,5 @@
 import { Component } from 'react';
-
+import * as escapeHtml from 'escape-html';
 
 export const DEFAULT_LANG_ID = 'python';
 
@@ -120,14 +120,14 @@ function _convertMatch(parsed_code, to_lang) {
 
       if (to_match) {
         text += to_match.code;
-        html += `<strong class="lang-code">${to_match.code}</strong>`;
+        html += `<strong class="lang-code">${escapeHtml(to_match.code)}</strong>`;
       } else {
         text += '<NO_EQUIV(' + m.value + ')>';
-        html += `<em class="lang-unknown">${m.value}</em>`;
+        html += `<em class="lang-unknown" title="no equivalent code found">${escapeHtml(m.value)}</em>`;
       }
     } else {
       text += m.value;
-      html += m.value;
+      html += escapeHtml(m.value);
     }
   });
 
