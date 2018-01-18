@@ -1,0 +1,34 @@
+[
+  {
+    "id": "django",
+    "url": "https://docs.djangoproject.com/en/1.11/ref/templates/builtins/",
+    "rows": "#s-date table:first tbody tr",
+    "fields": {
+      "code": "td:eq(0)",
+      "info": "td:eq(1)",
+      "ex": "td:eq(2)"
+    }
+  },
+  {
+    "id": "momentjs",
+    "url": "https://momentjs.com/docs/",
+    "rows": "h3 a[href=\"#/displaying/format/\"]:closest(article) table:first tr",
+    "fields": {
+      "cat": "td:eq(0)",
+      "code": "td:eq(1)",
+      "info": "td:eq(2)"
+    },
+    "skip_if_blank": ["code"],
+    "repeat_if_blank": ["cat"]
+  },
+  {
+    "id": "python",
+    "url": "http://strftime.org/",
+    "rows": ".reference table:first tbody tr",
+    "fields": {
+      "code": "td:eq(0)",
+      "info": "td:eq(1)",
+      "ex": "td:eq(2)"
+    }
+  }
+]

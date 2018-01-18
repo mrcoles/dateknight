@@ -2,6 +2,16 @@
 TODO
 ====
 
+1.  crawls
+2.  compare crawls to langs
+3.  standard sorting
+4.  tighter UI (like momentjs)
+5.  add GO (lol they have a known date!), Ruby, others?
+
+
+
+////////////
+
 *   allow specific langs to introduce a new format id, maybe namespaced, e.g., something like "momentjs:Y"
 *   more langs: ruby, go, ...
 

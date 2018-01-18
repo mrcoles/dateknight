@@ -3,24 +3,17 @@ const request = require('request');
 
 const CACHE_DIR = './.cache/';
 
-const to_fname = url => url.replace(/[\\\/:\.\?\#&]/gi, '_');
+const to_filename = url => url.replace(/[\\\/:\.\?\#&]/gi, '_');
 
 
-function extract_codes(url, extractor) {
-
-  cache_request(url, (err, content) => {
-    if (err) {
-      console.error(err);
-    } else {
-      let data = extractor(content);
-      console.log(JSON.stringify(data, null, 2));
-    }
-  });
-}
-
-
+// ## Cache Request
+//
+// A wrapper around `request` to perform GETs that
+// get cached to the file system into `${CACHE_DIR}`
+// to avoid downloading it every time.
+//
 function cache_request(url, cb) {
-  let cache_name = to_fname(url);
+  let cache_name = to_filename(url);
   let cache_path = CACHE_DIR + cache_name;
 
   if (fs.existsSync(cache_path)) {
@@ -42,10 +35,8 @@ function cache_request(url, cb) {
 }
 
 
-
 //
-// Exports
+// ## Exports
 //
 
 module.exports.cache_request = cache_request;
-module.exports.extract_codes = extract_codes;

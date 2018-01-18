@@ -1,19 +1,29 @@
 Crawl
 =====
 
-These scripts are to pull down the latest data from the reference pages and to compare that data with what is in ../langs/.
+Configure data to crawl any site inside `SITES.json`.
 
-Create crawled files such as:
+The relevant fields for a site are:
+
+*   id = the id name we use in the rest of this project
+*   url = the URL where we can download the documentation
+*   rows = a query selector to grab the relevant rows
+*   fields = individual query selectors to grab the data for each row
+
+Run via:
 
 ```
-mkdir -p data
-node momentjs.js > data/momentjs.json
-node python.js > data/django.json
-node python.js > data/python.json
+node main.js
 ```
+
+The results are hidden under the `.crawls` directory.
+
+
+
+## WIP
 
 Check for missing data from the crawled values vs what's in ./langs/* via:
 
 ```
-node compare.js ./data/momentjs.json ../langs/momentjs.json
+node compare.js ./.crawls/momentjs.json ../langs/momentjs.json
 ```

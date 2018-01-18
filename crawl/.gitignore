@@ -1,3 +1,4 @@
 .cache
+.crawls
 data
 node_modules
