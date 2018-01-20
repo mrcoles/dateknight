@@ -1,0 +1,41 @@
+
+/*
+// header #039be5 #0277bd
+// odd #fff
+// even #e1f5fe #b3e5fc
+*/
+
+.TightGrid {
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        line-height: 1.6;
+    }
+
+    th, td {
+        border: 1px solid #dedede;
+        padding: 3px 12px;
+        vertical-align: top;
+    }
+
+    th {
+        text-align: left;
+        border-color: #bdbdbd;
+    }
+
+    .item-cat {
+        text-align: right;
+        font-weight: bold;
+    }
+
+    .item-example,
+    .item-info {
+        white-space: pre-line;
+    }
+
+    .item-example {
+        max-width: 250px;
+    }
+}

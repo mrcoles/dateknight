@@ -10,6 +10,10 @@
         h2, a {
             padding: 0 $half_gap;
         }
+
+        a {
+            line-height: 2.4rem; // HACK - to get baseline to match with h2s
+        }
     }
     .docs-link {
         word-break: break-word; // breaks word if necessary

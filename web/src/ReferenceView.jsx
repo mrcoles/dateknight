@@ -5,7 +5,7 @@ import { BaseComponent, DEFAULT_LANG_ID } from './utils.js';
 
 import LangSelector from './LangSelector.jsx';
 import LangDetails from './LangDetails.jsx';
-import LangGrid from './LangGrid.jsx';
+import TightGrid from './TightGrid.jsx';
 
 
 class ReferenceView extends BaseComponent {
@@ -34,7 +34,7 @@ class ReferenceView extends BaseComponent {
                       lang_id={this.state.lang_id}
                       updateLangId={this.updateLangId} />
         <LangDetails lang={lang} />
-        <LangGrid lang={lang} />
+        <TightGrid lang={lang} />
       </div>
     );
   }
