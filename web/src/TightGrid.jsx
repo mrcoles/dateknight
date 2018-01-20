@@ -13,11 +13,11 @@ class TightGrid extends BaseComponent {
     super();
     this.state = {};
 
-    this._bind('toggleExpand');
+    this._bind('handleToggleExpand');
   }
 
   // Handlers
-  toggleExpand(evt, key, val) {
+  handleToggleExpand(evt, key, val) {
     evt.preventDefault();
     this.setState({ [key]: val });
   }
@@ -62,7 +62,7 @@ class TightGrid extends BaseComponent {
 
       let info_link = !fmt.info ? null : (
         <a className="info-link" href="#"
-           onClick={(e) => this.toggleExpand(e, exp_key, !expanded)}>
+           onClick={(e) => this.handleToggleExpand(e, exp_key, !expanded)}>
           (<span className="mono">{expanded ? '–' : '+'}</span> info)
         </a>
       );

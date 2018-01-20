@@ -14,16 +14,38 @@ class ReferenceView extends BaseComponent {
     super(props);
 
     this.state = {
-      lang_id: DEFAULT_LANG_ID
+      lang_id: this._getLangIdFromHash()
     };
 
-    this._bind('updateLangId');
+    this._bind('handleLangId', 'handleHashChange');
   }
 
-  updateLangId(lang_id) {
+  // Life-cycle
+  componentDidMount() {
+    window.addEventListener('hashchange', this.handleHashChange, false);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('handleHashChange', this.handleHashChange);
+  }
+
+  // Handlers
+  handleLangId(lang_id) {
     this.setState({lang_id: lang_id});
   }
 
+  handleHashChange(evt) {
+    evt.preventDefault();
+    this.setState({ lang_id: this._getLangIdFromHash() });
+  }
+
+  // Helpers
+  _getLangIdFromHash() {
+    let hash = window.location.hash.substring(1);
+    return (this.props.langs.find(x => x.id === hash)) ? hash : DEFAULT_LANG_ID;
+  }
+
+  // Render
   render() {
     let langs = this.props.langs;
     let lang = langs.find(x => x.id === this.state.lang_id);
@@ -32,7 +54,7 @@ class ReferenceView extends BaseComponent {
       <div className="ReferenceView widget">
         <LangSelector langs={langs}
                       lang_id={this.state.lang_id}
-                      updateLangId={this.updateLangId} />
+                      updateLangId={this.handleLangId} />
         <LangDetails lang={lang} />
         <TightGrid lang={lang} />
       </div>

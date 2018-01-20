@@ -11,8 +11,8 @@ class LangSelector extends BaseComponent {
     this._bind('handleClick');
   }
 
-  handleClick(event, lang) {
-    event.preventDefault();
+  handleClick(evt, lang) {
+    evt.preventDefault();
     this.props.updateLangId(lang.id);
   }
 
