@@ -5,8 +5,8 @@
     "rows": "#s-date table:first tbody tr",
     "fields": {
       "code": "td:eq(0)",
-      "info": "td:eq(1)",
-      "ex": "td:eq(2)"
+      "example": "td:eq(2)",
+      "info": "td:eq(1)"
     }
   },
   {
@@ -16,7 +16,7 @@
     "fields": {
       "cat": "td:eq(0)",
       "code": "td:eq(1)",
-      "info": "td:eq(2)"
+      "example": "td:eq(2)"
     },
     "skip_if_blank": ["code"],
     "repeat_if_blank": ["cat"]
@@ -27,8 +27,8 @@
     "rows": ".reference table:first tbody tr",
     "fields": {
       "code": "td:eq(0)",
-      "info": "td:eq(1)",
-      "ex": "td:eq(2)"
+      "example": "td:eq(2)",
+      "info": "td:eq(1)"
     }
   }
 ]

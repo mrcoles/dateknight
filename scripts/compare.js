@@ -88,8 +88,15 @@ function _findMissingCodesForId(id, crawl_data, lang_data) {
   let crawl_codes = new Set(crawl_data.map(d => d.code));
   let lang_codes = new Set(lang_data.map(d => d.code));
 
-  let langs = crawl_data.filter(d => !lang_codes.has(d.code));
-  let crawls = lang_data.filter(d => !crawl_codes.has(d.code));
+  const _keys = ['cat', 'id', 'code', 'example', 'info'];
+  const _update_keys = (fmt) => {
+    let d = {};
+    _keys.forEach(k => d[k] = fmt[k] || '');
+    return d;
+  }
+
+  let langs = crawl_data.filter(d => !lang_codes.has(d.code)).map(_update_keys);
+  let crawls = lang_data.filter(d => !crawl_codes.has(d.code)).map(_update_keys);
 
   return { id, crawls, langs };
 }
