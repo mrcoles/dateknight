@@ -6,12 +6,13 @@
 */
 
 .TightGrid {
+    margin-bottom: 2em;
 
     table {
         border-collapse: collapse;
         border-spacing: 0;
         width: 100%;
-        line-height: 1.6;
+        line-height: 2.2rem;
     }
 
     th, td {
@@ -37,5 +38,28 @@
 
     .item-example {
         max-width: 250px;
+    }
+
+    .info-link {
+        float: right;
+        margin: 1px 0 0 15px;
+        visibility: hidden;
+        color: #999;
+        font-size: .8em;
+    }
+
+    tr:hover .info-link {
+        visibility: visible;
+    }
+
+    .info-content {
+        display: block;
+        margin-top: .5em;
+        font-style: italic;
+        color: #999;
+    }
+
+    .mono {
+        font-family: Courier New, monospace;
     }
 }
