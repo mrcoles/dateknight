@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
-const utils = require('./utils');
+const util = require('./util');
 
 const EXPORT_DIR = './web/src/data/';
 
@@ -16,7 +16,7 @@ console.log(`created ${formats_exp_path}`);
 
 // combine and copy langs
 
-const langs = utils.get_langs().map(l => l.data);
+const langs = util.get_langs().map(l => l.data);
 const langs_contents = `export default ${JSON.stringify(langs, null, 2)}`;
 const langs_exp_path = `${EXPORT_DIR}langs.js`;
 
