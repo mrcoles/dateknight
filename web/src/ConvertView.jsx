@@ -64,18 +64,7 @@ class ConvertView extends utils.BaseComponent {
 
     // header form
     elts.push(
-      <label className="convert-label" key={'convert-label'}>
-        <strong>Convert:</strong>
-      </label>,
-      <div className="convert-form col23" key={'convert-form'}>
-        <input
-          className="base-code inputlike"
-          type="text"
-          name="code"
-          value={code}
-          onChange={this.handleChange}
-        />{' '}
-        <label>from</label>{' '}
+      <div className="convert-label" key={'convert-label'}>
         <select
           name="from_lang_id"
           value={from_lang.id}
@@ -87,15 +76,20 @@ class ConvertView extends utils.BaseComponent {
             </option>
           ))}
         </select>
+      </div>,
+      <div className="convert-form col23" key={'convert-form'}>
+        <input
+          className="base-code inputlike"
+          type="text"
+          name="code"
+          value={code}
+          onChange={this.handleChange}
+        />{' '}
+        <label>into…</label>{' '}
       </div>
     );
 
     // results
-    elts.push(
-      <div className="first col13" key={'convert-results'}>
-        <strong>Into:</strong>
-      </div>
-    );
 
     converted_values.forEach(({ lang, text, html }) =>
       elts.push(
@@ -122,7 +116,7 @@ class ConvertView extends utils.BaseComponent {
 
     return (
       <div className="ConvertView widget widget2x">
-        <h2>Convert between languages</h2>
+        <h2>Convert</h2>
         <div className="items">{elts}</div>
       </div>
     );
