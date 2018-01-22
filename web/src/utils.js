@@ -3,7 +3,6 @@ import * as escapeHtml from 'escape-html';
 
 export const DEFAULT_LANG_ID = 'python';
 
-
 // ### BaseComponent
 //
 // Auto-binds any methods starting with "handle" to `this`.
@@ -23,11 +22,9 @@ export class BaseComponent extends Component {
   }
 
   _bind(...methods) {
-    methods.forEach((method) => this[method] = this[method].bind(this));
+    methods.forEach(method => (this[method] = this[method].bind(this)));
   }
 }
-
-
 
 // ### Get All Methods
 //
@@ -39,32 +36,32 @@ export class BaseComponent extends Component {
 // complains about access to isMounted(...)
 //
 const getAllMethods = (obj, limitToClass) => {
-  let props = []
+  let props = [];
 
-  const _filter = (p, i, arr) => (
-    typeof obj[p] === 'function' &&  // only the methods
-    p !== 'constructor' &&           // not the constructor
+  const _filter = (p, i, arr) =>
+    typeof obj[p] === 'function' && // only the methods
+    p !== 'constructor' && // not the constructor
     (i === 0 || p !== arr[i - 1]) && // not overriding in this prototype
-    props.indexOf(p) === -1          // not overridden in a child
-  );
+    props.indexOf(p) === -1; // not overridden in a child
 
   do {
     const l = Object.getOwnPropertyNames(obj)
-                    .concat(Object.getOwnPropertySymbols(obj).map(s => s.toString()))
-                    .sort()
-                    .filter(_filter);
+      .concat(Object.getOwnPropertySymbols(obj).map(s => s.toString()))
+      .sort()
+      .filter(_filter);
     props = props.concat(l);
 
     obj = Object.getPrototypeOf(obj);
     // walk-up the prototype chain, but not Object.prototype
     // also limit to class if available
-  } while (obj &&
-           Object.getPrototypeOf(obj) &&
-           (!limitToClass || limitToClass.prototype.isPrototypeOf(obj)));
+  } while (
+    obj &&
+    Object.getPrototypeOf(obj) &&
+    (!limitToClass || limitToClass.prototype.isPrototypeOf(obj))
+  );
 
   return props;
-}
-
+};
 
 export function convertCode(code, from_lang, to_langs) {
   let formats = _extractFormats(from_lang);
@@ -74,10 +71,9 @@ export function convertCode(code, from_lang, to_langs) {
     let parsed_code = _parseMatches(code, matches);
     let { text, html } = _convertMatch(parsed_code, to_lang);
 
-    return {lang: to_lang, text, html};
+    return { lang: to_lang, text, html };
   });
 }
-
 
 function _extractFormats(lang) {
   // Extract, copy, and sort `lang.formats`
@@ -85,7 +81,6 @@ function _extractFormats(lang) {
   formats.sort((a, b) => b.code.length - a.code.length);
   return formats;
 }
-
 
 function _findMatches(code, formats) {
   // Check each index of `code` for a matching `code` in
@@ -96,9 +91,8 @@ function _findMatches(code, formats) {
 
   let code_i = 0;
 
-  const _findMatch = (fmt) => (
-    code.substring(code_i, code_i + fmt.code.length) === fmt.code
-  );
+  const _findMatch = fmt =>
+    code.substring(code_i, code_i + fmt.code.length) === fmt.code;
 
   while (code_i < code.length) {
     let m = formats.find(_findMatch);
@@ -119,7 +113,6 @@ function _findMatches(code, formats) {
 
   return matches;
 }
-
 
 function _parseMatches(code, matches) {
   // Returns an array of objects representing segments
@@ -153,7 +146,7 @@ function _parseMatches(code, matches) {
         end: m.end,
         format_id: m.format_id,
         value: m.value
-      })
+      });
       end = m.end;
     }
 
@@ -162,7 +155,6 @@ function _parseMatches(code, matches) {
 
   return result;
 }
-
 
 function _convertMatch(parsed_code, to_lang) {
   let text = '';
@@ -175,10 +167,14 @@ function _convertMatch(parsed_code, to_lang) {
 
       if (to_match) {
         text += to_match.code;
-        html += `<strong class="lang-code">${escapeHtml(to_match.code)}</strong>`;
+        html += `<strong class="lang-code">${escapeHtml(
+          to_match.code
+        )}</strong>`;
       } else {
         text += '<NO_EQUIV(' + m.value + ')>';
-        html += `<em class="lang-unknown" title="no equivalent code found">${escapeHtml(m.value)}</em>`;
+        html += `<em class="lang-unknown" title="no equivalent code found">${escapeHtml(
+          m.value
+        )}</em>`;
       }
     } else {
       text += m.value;
@@ -186,5 +182,5 @@ function _convertMatch(parsed_code, to_lang) {
     }
   });
 
-  return {text, html};
+  return { text, html };
 }
