@@ -3,7 +3,6 @@ import { BaseComponent } from './utils.js';
 
 import './compiled/RefTable.css';
 
-
 class RefTable extends BaseComponent {
   render() {
     let formats = this.props.formats;
@@ -18,11 +17,8 @@ class RefTable extends BaseComponent {
         last_cat = fmt.cat;
         group_counter = 0;
         rows.push(
-          <tr key={fmt.cat + '-' + fmt.id + '-header'}
-              className="tr-header">
-            <td colSpan="3">
-              {fmt.cat}
-            </td>
+          <tr key={fmt.cat + '-' + fmt.id + '-header'} className="tr-header">
+            <td colSpan="3">{fmt.cat}</td>
           </tr>
         );
       }
@@ -42,13 +38,10 @@ class RefTable extends BaseComponent {
 
     return (
       <table className="RefTable" colSpace="0">
-        <tbody>
-          {rows}
-        </tbody>
+        <tbody>{rows}</tbody>
       </table>
     );
   }
 }
-
 
 export default RefTable;

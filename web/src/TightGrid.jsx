@@ -3,10 +3,8 @@ import { BaseComponent } from './utils.js';
 
 import './compiled/TightGrid.css';
 
-
-const _getKey = (fmt) => `${fmt.cat}-${fmt.code}`;
-const _getExpKey = (fmt) => `expand-${_getKey(fmt)}`
-
+const _getKey = fmt => `${fmt.cat}-${fmt.code}`;
+const _getExpKey = fmt => `expand-${_getKey(fmt)}`;
 
 class TightGrid extends BaseComponent {
   constructor() {
@@ -59,15 +57,18 @@ class TightGrid extends BaseComponent {
       }
 
       let info_link = !fmt.info ? null : (
-        <button className="info-link"
-           onClick={(e) => this.handleToggleExpand(e, exp_key, !expanded)}>
+        <button
+          className="info-link"
+          onClick={e => this.handleToggleExpand(e, exp_key, !expanded)}
+        >
           (<span className="mono">{expanded ? '–' : '+'}</span> info)
         </button>
       );
 
-      let info_content = !fmt.info || !expanded ? null : (
-        <span className="info-content">{fmt.info}</span>
-      );
+      let info_content =
+        !fmt.info || !expanded ? null : (
+          <span className="info-content">{fmt.info}</span>
+        );
 
       return (
         <tr className="row" key={_getKey(fmt)}>
@@ -83,8 +84,10 @@ class TightGrid extends BaseComponent {
     });
 
     let all_info_link = !has_info ? null : (
-      <button className="info-link"
-         onClick={(e) => this.toggleAllExpands(e, !all_expanded)}>
+      <button
+        className="info-link"
+        onClick={e => this.toggleAllExpands(e, !all_expanded)}
+      >
         (<span className="mono">{all_expanded ? '–' : '+'}</span> infos)
       </button>
     );
@@ -94,7 +97,7 @@ class TightGrid extends BaseComponent {
         <table>
           <thead>
             <tr>
-              <th></th>
+              <th />
               <th>Token</th>
               <th>
                 {all_info_link}
@@ -102,14 +105,11 @@ class TightGrid extends BaseComponent {
               </th>
             </tr>
           </thead>
-          <tbody>
-            {rows}
-          </tbody>
+          <tbody>{rows}</tbody>
         </table>
       </div>
     );
   }
 }
-
 
 export default TightGrid;

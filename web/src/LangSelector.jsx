@@ -3,9 +3,7 @@ import { BaseComponent } from './utils.js';
 
 import './compiled/LangSelector.css';
 
-
 class LangSelector extends BaseComponent {
-
   render() {
     let langs = this.props.langs;
 
@@ -14,8 +12,7 @@ class LangSelector extends BaseComponent {
         <span className="label">Choose language/library:</span>
         <span className="options">
           {langs.map(l => (
-            <a href={'#' + l.id}
-               key={l.id}>
+            <a href={'#' + l.id} key={l.id}>
               {l.name}
             </a>
           ))}
@@ -24,6 +21,5 @@ class LangSelector extends BaseComponent {
     );
   }
 }
-
 
 export default LangSelector;

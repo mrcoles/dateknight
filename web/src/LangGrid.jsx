@@ -3,7 +3,6 @@ import { BaseComponent } from './utils.js';
 
 import './compiled/LangGrid.css';
 
-
 class LangGrid extends BaseComponent {
   render() {
     let lang = this.props.lang;
@@ -17,7 +16,10 @@ class LangGrid extends BaseComponent {
         last_cat = fmt.cat;
         group_counter = 0;
         rows.push(
-          <div className="row row-header" key={fmt.cat + '-' + fmt.code + '-header'}>
+          <div
+            className="row row-header"
+            key={fmt.cat + '-' + fmt.code + '-header'}
+          >
             {fmt.cat}
           </div>
         );
@@ -25,7 +27,7 @@ class LangGrid extends BaseComponent {
 
       let row_classes = ['row'];
       row_classes.push(group_counter % 2 === 0 ? 'odd' : 'even');
-      
+
       rows.push(
         <div className={row_classes.join(' ')} key={fmt.cat + '-' + fmt.code}>
           <div className="item item-code">{fmt.code}</div>
@@ -37,13 +39,8 @@ class LangGrid extends BaseComponent {
       group_counter++;
     });
 
-    return (
-      <div className="LangGrid">
-        {rows}
-      </div>
-    );
+    return <div className="LangGrid">{rows}</div>;
   }
 }
-
 
 export default LangGrid;

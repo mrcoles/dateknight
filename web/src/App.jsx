@@ -7,16 +7,14 @@ import ConvertView from './ConvertView.jsx';
 
 import _langs from './data/langs.js';
 
-
 const LANGS = _langs.filter(x => x.formats !== undefined);
-
 
 class App extends BaseComponent {
   constructor() {
     super();
 
     this.state = {
-      langs: LANGS,
+      langs: LANGS
     };
   }
 
@@ -29,27 +27,31 @@ class App extends BaseComponent {
           <h1>
             Date Knight
             <small>
-              A universal date time string {' '}
+              A universal date time string{' '}
               <span className="nowrap">formatting reference</span>
             </small>
           </h1>
           <ReferenceView langs={langs} />
           <ConvertView langs={langs} />
-          <br /><br />
+          <br />
+          <br />
           <div>
             <strong>
-              <a target="_blank" rel="noopener noreferrer"
-                 href="https://github.com/mrcoles/dateknight">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/mrcoles/dateknight"
+              >
                 View source on Github &raquo;
               </a>
             </strong>
           </div>
-          <br /><br />
+          <br />
+          <br />
         </div>
       </div>
     );
   }
 }
-
 
 export default App;
