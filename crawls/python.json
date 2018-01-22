@@ -1,0 +1,157 @@
+[
+  {
+    "code": "%a",
+    "example": "Mon",
+    "info": "Weekday as locale’s abbreviated name."
+  },
+  {
+    "code": "%A",
+    "example": "Monday",
+    "info": "Weekday as locale’s full name."
+  },
+  {
+    "code": "%w",
+    "example": "1",
+    "info": "Weekday as a decimal number, where 0 is Sunday and 6 is Saturday."
+  },
+  {
+    "code": "%d",
+    "example": "30",
+    "info": "Day of the month as a zero-padded decimal number."
+  },
+  {
+    "code": "%-d",
+    "example": "30",
+    "info": "Day of the month as a  decimal number. (Platform specific)"
+  },
+  {
+    "code": "%b",
+    "example": "Sep",
+    "info": "Month as locale’s abbreviated name."
+  },
+  {
+    "code": "%B",
+    "example": "September",
+    "info": "Month as locale’s full name."
+  },
+  {
+    "code": "%m",
+    "example": "09",
+    "info": "Month as a zero-padded decimal number."
+  },
+  {
+    "code": "%-m",
+    "example": "9",
+    "info": "Month as a  decimal number. (Platform specific)"
+  },
+  {
+    "code": "%y",
+    "example": "13",
+    "info": "Year without century as a zero-padded decimal number."
+  },
+  {
+    "code": "%Y",
+    "example": "2013",
+    "info": "Year with century as a decimal number."
+  },
+  {
+    "code": "%H",
+    "example": "07",
+    "info": "Hour (24-hour clock) as a zero-padded decimal number."
+  },
+  {
+    "code": "%-H",
+    "example": "7",
+    "info": "Hour (24-hour clock) as a  decimal number. (Platform specific)"
+  },
+  {
+    "code": "%I",
+    "example": "07",
+    "info": "Hour (12-hour clock) as a zero-padded decimal number."
+  },
+  {
+    "code": "%-I",
+    "example": "7",
+    "info": "Hour (12-hour clock) as a  decimal number. (Platform specific)"
+  },
+  {
+    "code": "%p",
+    "example": "AM",
+    "info": "Locale’s equivalent of either AM or PM."
+  },
+  {
+    "code": "%M",
+    "example": "06",
+    "info": "Minute as a zero-padded decimal number."
+  },
+  {
+    "code": "%-M",
+    "example": "6",
+    "info": "Minute as a  decimal number. (Platform specific)"
+  },
+  {
+    "code": "%S",
+    "example": "05",
+    "info": "Second as a zero-padded decimal number."
+  },
+  {
+    "code": "%-S",
+    "example": "5",
+    "info": "Second as a  decimal number. (Platform specific)"
+  },
+  {
+    "code": "%f",
+    "example": "000000",
+    "info": "Microsecond as a decimal number, zero-padded on the left."
+  },
+  {
+    "code": "%z",
+    "example": "",
+    "info": "UTC offset in the form +HHMM or -HHMM (empty string if the the object is naive)."
+  },
+  {
+    "code": "%Z",
+    "example": "",
+    "info": "Time zone name (empty string if the object is naive)."
+  },
+  {
+    "code": "%j",
+    "example": "273",
+    "info": "Day of the year as a zero-padded decimal number."
+  },
+  {
+    "code": "%-j",
+    "example": "273",
+    "info": "Day of the year as a  decimal number. (Platform specific)"
+  },
+  {
+    "code": "%U",
+    "example": "39",
+    "info": "Week number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0."
+  },
+  {
+    "code": "%W",
+    "example": "39",
+    "info": "Week number of the year (Monday as the first day of the week) as a decimal number. All days in a new year preceding the first Monday are considered to be in week 0."
+  },
+  {
+    "code": "%c",
+    "example": "Mon Sep 30 07:06:05 2013",
+    "info": "Locale’s appropriate date and time representation."
+  },
+  {
+    "code": "%x",
+    "example": "09/30/13",
+    "info": "Locale’s appropriate date representation."
+  },
+  {
+    "code": "%X",
+    "example": "07:06:05",
+    "info": "Locale’s appropriate time representation."
+  },
+  {
+    "code": "%%",
+    "example": "%",
+    "info": "A literal '%' character."
+  }
+]

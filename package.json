@@ -18,7 +18,9 @@
   },
   "homepage": "https://mrcoles/dateknight",
   "devDependencies": {
-    "minimist": "^1.2.0"
+    "cached-request": "^1.1.2",
+    "minimist": "^1.2.0",
+    "pseudo-cheerio": "^1.0.0"
   },
   "dependencies": {}
 }

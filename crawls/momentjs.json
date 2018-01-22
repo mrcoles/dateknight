@@ -1,0 +1,272 @@
+[
+  {
+    "cat": "Month",
+    "code": "M",
+    "example": "1 2 ... 11 12"
+  },
+  {
+    "cat": "Month",
+    "code": "Mo",
+    "example": "1st 2nd ... 11th 12th"
+  },
+  {
+    "cat": "Month",
+    "code": "MM",
+    "example": "01 02 ... 11 12"
+  },
+  {
+    "cat": "Month",
+    "code": "MMM",
+    "example": "Jan Feb ... Nov Dec"
+  },
+  {
+    "cat": "Month",
+    "code": "MMMM",
+    "example": "January February ... November December"
+  },
+  {
+    "cat": "Quarter",
+    "code": "Q",
+    "example": "1 2 3 4"
+  },
+  {
+    "cat": "Quarter",
+    "code": "Qo",
+    "example": "1st 2nd 3rd 4th"
+  },
+  {
+    "cat": "Day of Month",
+    "code": "D",
+    "example": "1 2 ... 30 31"
+  },
+  {
+    "cat": "Day of Month",
+    "code": "Do",
+    "example": "1st 2nd ... 30th 31st"
+  },
+  {
+    "cat": "Day of Month",
+    "code": "DD",
+    "example": "01 02 ... 30 31"
+  },
+  {
+    "cat": "Day of Year",
+    "code": "DDD",
+    "example": "1 2 ... 364 365"
+  },
+  {
+    "cat": "Day of Year",
+    "code": "DDDo",
+    "example": "1st 2nd ... 364th 365th"
+  },
+  {
+    "cat": "Day of Year",
+    "code": "DDDD",
+    "example": "001 002 ... 364 365"
+  },
+  {
+    "cat": "Day of Week",
+    "code": "d",
+    "example": "0 1 ... 5 6"
+  },
+  {
+    "cat": "Day of Week",
+    "code": "do",
+    "example": "0th 1st ... 5th 6th"
+  },
+  {
+    "cat": "Day of Week",
+    "code": "dd",
+    "example": "Su Mo ... Fr Sa"
+  },
+  {
+    "cat": "Day of Week",
+    "code": "ddd",
+    "example": "Sun Mon ... Fri Sat"
+  },
+  {
+    "cat": "Day of Week",
+    "code": "dddd",
+    "example": "Sunday Monday ... Friday Saturday"
+  },
+  {
+    "cat": "Day of Week (Locale)",
+    "code": "e",
+    "example": "0 1 ... 5 6"
+  },
+  {
+    "cat": "Day of Week (ISO)",
+    "code": "E",
+    "example": "1 2 ... 6 7"
+  },
+  {
+    "cat": "Week of Year",
+    "code": "w",
+    "example": "1 2 ... 52 53"
+  },
+  {
+    "cat": "Week of Year",
+    "code": "wo",
+    "example": "1st 2nd ... 52nd 53rd"
+  },
+  {
+    "cat": "Week of Year",
+    "code": "ww",
+    "example": "01 02 ... 52 53"
+  },
+  {
+    "cat": "Week of Year (ISO)",
+    "code": "W",
+    "example": "1 2 ... 52 53"
+  },
+  {
+    "cat": "Week of Year (ISO)",
+    "code": "Wo",
+    "example": "1st 2nd ... 52nd 53rd"
+  },
+  {
+    "cat": "Week of Year (ISO)",
+    "code": "WW",
+    "example": "01 02 ... 52 53"
+  },
+  {
+    "cat": "Year",
+    "code": "YY",
+    "example": "70 71 ... 29 30"
+  },
+  {
+    "cat": "Year",
+    "code": "YYYY",
+    "example": "1970 1971 ... 2029 2030"
+  },
+  {
+    "cat": "Year",
+    "code": "Y",
+    "example": "1970 1971 ... 9999 +10000 +10001\n        \n        Note: This complies with the ISO 8601 standard for dates past the year 9999"
+  },
+  {
+    "cat": "Week Year",
+    "code": "gg",
+    "example": "70 71 ... 29 30"
+  },
+  {
+    "cat": "Week Year",
+    "code": "gggg",
+    "example": "1970 1971 ... 2029 2030"
+  },
+  {
+    "cat": "Week Year (ISO)",
+    "code": "GG",
+    "example": "70 71 ... 29 30"
+  },
+  {
+    "cat": "Week Year (ISO)",
+    "code": "GGGG",
+    "example": "1970 1971 ... 2029 2030"
+  },
+  {
+    "cat": "AM/PM",
+    "code": "A",
+    "example": "AM PM"
+  },
+  {
+    "cat": "AM/PM",
+    "code": "a",
+    "example": "am pm"
+  },
+  {
+    "cat": "Hour",
+    "code": "H",
+    "example": "0 1 ... 22 23"
+  },
+  {
+    "cat": "Hour",
+    "code": "HH",
+    "example": "00 01 ... 22 23"
+  },
+  {
+    "cat": "Hour",
+    "code": "h",
+    "example": "1 2 ... 11 12"
+  },
+  {
+    "cat": "Hour",
+    "code": "hh",
+    "example": "01 02 ... 11 12"
+  },
+  {
+    "cat": "Hour",
+    "code": "k",
+    "example": "1 2 ... 23 24"
+  },
+  {
+    "cat": "Hour",
+    "code": "kk",
+    "example": "01 02 ... 23 24"
+  },
+  {
+    "cat": "Minute",
+    "code": "m",
+    "example": "0 1 ... 58 59"
+  },
+  {
+    "cat": "Minute",
+    "code": "mm",
+    "example": "00 01 ... 58 59"
+  },
+  {
+    "cat": "Second",
+    "code": "s",
+    "example": "0 1 ... 58 59"
+  },
+  {
+    "cat": "Second",
+    "code": "ss",
+    "example": "00 01 ... 58 59"
+  },
+  {
+    "cat": "Fractional Second",
+    "code": "S",
+    "example": "0 1 ... 8 9"
+  },
+  {
+    "cat": "Fractional Second",
+    "code": "SS",
+    "example": "00 01 ... 98 99"
+  },
+  {
+    "cat": "Fractional Second",
+    "code": "SSS",
+    "example": "000 001 ... 998 999"
+  },
+  {
+    "cat": "Fractional Second",
+    "code": "SSSS ... SSSSSSSSS",
+    "example": "000[0..] 001[0..] ... 998[0..] 999[0..]"
+  },
+  {
+    "cat": "Time Zone",
+    "code": "z or zz",
+    "example": "EST CST ... MST PST\n        \n        Note: as of 1.6.0, the z/zz format tokens have been deprecated from plain moment objects. Read more about it here.\n        However, they do work if you are using a specific time zone with the moment-timezone addon."
+  },
+  {
+    "cat": "Time Zone",
+    "code": "Z",
+    "example": "-07:00 -06:00 ... +06:00 +07:00"
+  },
+  {
+    "cat": "Time Zone",
+    "code": "ZZ",
+    "example": "-0700 -0600 ... +0600 +0700"
+  },
+  {
+    "cat": "Unix Timestamp",
+    "code": "X",
+    "example": "1360013296"
+  },
+  {
+    "cat": "Unix Millisecond Timestamp",
+    "code": "x",
+    "example": "1360013296123"
+  }
+]

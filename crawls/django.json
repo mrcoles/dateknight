@@ -1,0 +1,202 @@
+[
+  {
+    "code": "a",
+    "example": "'a.m.'",
+    "info": "'a.m.' or 'p.m.' (Note that\nthis is slightly different than PHP’s\noutput, because this includes periods\nto match Associated Press style.)"
+  },
+  {
+    "code": "A",
+    "example": "'AM'",
+    "info": "'AM' or 'PM'."
+  },
+  {
+    "code": "b",
+    "example": "'jan'",
+    "info": "Month, textual, 3 letters, lowercase."
+  },
+  {
+    "code": "B",
+    "example": "",
+    "info": "Not implemented."
+  },
+  {
+    "code": "c",
+    "example": "2008-01-02T10:30:00.000123+02:00,\nor 2008-01-02T10:30:00.000123 if the datetime is naive",
+    "info": "ISO 8601 format. (Note: unlike others\nformatters, such as “Z”, “O” or “r”,\nthe “c” formatter will not add timezone\noffset if value is a naive datetime\n(see datetime.tzinfo)."
+  },
+  {
+    "code": "d",
+    "example": "'01' to '31'",
+    "info": "Day of the month, 2 digits with\nleading zeros."
+  },
+  {
+    "code": "D",
+    "example": "'Fri'",
+    "info": "Day of the week, textual, 3 letters."
+  },
+  {
+    "code": "e",
+    "example": "'', 'GMT', '-500', 'US/Eastern', etc.",
+    "info": "Timezone name. Could be in any format,\nor might return an empty string,\ndepending on the datetime."
+  },
+  {
+    "code": "E",
+    "example": "'listopada' (for Polish locale, as opposed to 'Listopad')",
+    "info": "Month, locale specific alternative\nrepresentation usually used for long\ndate representation."
+  },
+  {
+    "code": "f",
+    "example": "'1', '1:30'",
+    "info": "Time, in 12-hour hours and minutes,\nwith minutes left off if they’re zero.\nProprietary extension."
+  },
+  {
+    "code": "F",
+    "example": "'January'",
+    "info": "Month, textual, long."
+  },
+  {
+    "code": "g",
+    "example": "'1' to '12'",
+    "info": "Hour, 12-hour format without leading\nzeros."
+  },
+  {
+    "code": "G",
+    "example": "'0' to '23'",
+    "info": "Hour, 24-hour format without leading\nzeros."
+  },
+  {
+    "code": "h",
+    "example": "'01' to '12'",
+    "info": "Hour, 12-hour format."
+  },
+  {
+    "code": "H",
+    "example": "'00' to '23'",
+    "info": "Hour, 24-hour format."
+  },
+  {
+    "code": "i",
+    "example": "'00' to '59'",
+    "info": "Minutes."
+  },
+  {
+    "code": "I",
+    "example": "'1' or '0'",
+    "info": "Daylight Savings Time, whether it’s\nin effect or not."
+  },
+  {
+    "code": "j",
+    "example": "'1' to '31'",
+    "info": "Day of the month without leading\nzeros."
+  },
+  {
+    "code": "l",
+    "example": "'Friday'",
+    "info": "Day of the week, textual, long."
+  },
+  {
+    "code": "L",
+    "example": "True or False",
+    "info": "Boolean for whether it’s a leap year."
+  },
+  {
+    "code": "m",
+    "example": "'01' to '12'",
+    "info": "Month, 2 digits with leading zeros."
+  },
+  {
+    "code": "M",
+    "example": "'Jan'",
+    "info": "Month, textual, 3 letters."
+  },
+  {
+    "code": "n",
+    "example": "'1' to '12'",
+    "info": "Month without leading zeros."
+  },
+  {
+    "code": "N",
+    "example": "'Jan.', 'Feb.', 'March', 'May'",
+    "info": "Month abbreviation in Associated Press\nstyle. Proprietary extension."
+  },
+  {
+    "code": "o",
+    "example": "'1999'",
+    "info": "ISO-8601 week-numbering year,\ncorresponding to the ISO-8601 week\nnumber (W) which uses leap weeks. See Y\nfor the more common year format."
+  },
+  {
+    "code": "O",
+    "example": "'+0200'",
+    "info": "Difference to Greenwich time in hours."
+  },
+  {
+    "code": "P",
+    "example": "'1 a.m.', '1:30 p.m.', 'midnight', 'noon', '12:30 p.m.'",
+    "info": "Time, in 12-hour hours, minutes and\n‘a.m.’/’p.m.’, with minutes left off\nif they’re zero and the special-case\nstrings ‘midnight’ and ‘noon’ if\nappropriate. Proprietary extension."
+  },
+  {
+    "code": "r",
+    "example": "'Thu, 21 Dec 2000 16:01:07 +0200'",
+    "info": "RFC 5322 formatted date."
+  },
+  {
+    "code": "s",
+    "example": "'00' to '59'",
+    "info": "Seconds, 2 digits with leading zeros."
+  },
+  {
+    "code": "S",
+    "example": "'st', 'nd', 'rd' or 'th'",
+    "info": "English ordinal suffix for day of the\nmonth, 2 characters."
+  },
+  {
+    "code": "t",
+    "example": "28 to 31",
+    "info": "Number of days in the given month."
+  },
+  {
+    "code": "T",
+    "example": "'EST', 'MDT'",
+    "info": "Time zone of this machine."
+  },
+  {
+    "code": "u",
+    "example": "000000 to 999999",
+    "info": "Microseconds."
+  },
+  {
+    "code": "U",
+    "example": "",
+    "info": "Seconds since the Unix Epoch\n(January 1 1970 00:00:00 UTC)."
+  },
+  {
+    "code": "w",
+    "example": "'0' (Sunday) to '6' (Saturday)",
+    "info": "Day of the week, digits without\nleading zeros."
+  },
+  {
+    "code": "W",
+    "example": "1, 53",
+    "info": "ISO-8601 week number of year, with\nweeks starting on Monday."
+  },
+  {
+    "code": "y",
+    "example": "'99'",
+    "info": "Year, 2 digits."
+  },
+  {
+    "code": "Y",
+    "example": "'1999'",
+    "info": "Year, 4 digits."
+  },
+  {
+    "code": "z",
+    "example": "0 to 365",
+    "info": "Day of the year."
+  },
+  {
+    "code": "Z",
+    "example": "-43200 to 43200",
+    "info": "Time zone offset in seconds. The\noffset for timezones west of UTC is\nalways negative, and for those east of\nUTC is always positive."
+  }
+]

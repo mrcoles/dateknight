@@ -1,2 +1,4 @@
-scratch/
+.cache/
 node_modules/
+scratch/
+tscratch/
