@@ -16,8 +16,6 @@ class ReferenceView extends BaseComponent {
     this.state = {
       lang_id: this._getLangIdFromHash()
     };
-
-    this._bind('handleLangId', 'handleHashChange');
   }
 
   // Life-cycle

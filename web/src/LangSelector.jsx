@@ -6,11 +6,6 @@ import './compiled/LangSelector.css';
 
 class LangSelector extends BaseComponent {
 
-  constructor(props) {
-    super(props);
-    this._bind('handleClick');
-  }
-
   render() {
     let langs = this.props.langs;
 

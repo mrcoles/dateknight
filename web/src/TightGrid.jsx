@@ -12,8 +12,6 @@ class TightGrid extends BaseComponent {
   constructor() {
     super();
     this.state = {};
-
-    this._bind('handleToggleExpand');
   }
 
   // Handlers

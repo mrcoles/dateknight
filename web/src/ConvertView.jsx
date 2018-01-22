@@ -14,8 +14,6 @@ class ConvertView extends utils.BaseComponent {
       code: '%Y-%m-%d %H:%M:%S',
       from_lang_id: 'python'
     };
-
-    this._bind('handleChange', 'handleSwap');
   }
 
   //
