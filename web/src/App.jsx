@@ -2,8 +2,10 @@ import React from 'react';
 import { BaseComponent } from './utils.js';
 
 import './compiled/App.css';
+import ForkMe from './ForkMe.jsx';
 import ReferenceView from './ReferenceView.jsx';
 import ConvertView from './ConvertView.jsx';
+import Footer from './Footer.jsx';
 
 import _langs from './data/langs.js';
 
@@ -23,7 +25,11 @@ class App extends BaseComponent {
 
     return (
       <div className="App">
-        <div className="container">
+        <ForkMe
+          url="https://github.com/mrcoles/dateknight"
+          title="View source on Github"
+        />
+        <div className="container main">
           <h1>
             Date Knight
             <small>
@@ -33,22 +39,9 @@ class App extends BaseComponent {
           </h1>
           <ReferenceView langs={langs} />
           <ConvertView langs={langs} />
-          <br />
-          <br />
-          <div>
-            <strong>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://github.com/mrcoles/dateknight"
-              >
-                View source on Github &raquo;
-              </a>
-            </strong>
-          </div>
-          <br />
-          <br />
         </div>
+
+        <Footer />
       </div>
     );
   }

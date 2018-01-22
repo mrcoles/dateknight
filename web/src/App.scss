@@ -1,7 +1,8 @@
 .App {
-  max-width: 630px;
-  margin: 2.0rem auto;
-  padding: 0 2.5rem;
+
+  .main {
+    padding: 2.0rem 0;
+  }
 
   h1 {
       margin-left: -1.0rem;

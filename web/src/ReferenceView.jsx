@@ -47,7 +47,7 @@ class ReferenceView extends BaseComponent {
     let lang = langs.find(x => x.id === this.state.lang_id);
 
     return (
-      <div className="ReferenceView widget">
+      <div className="ReferenceView widget widget2x">
         <LangSelector
           langs={langs}
           lang_id={this.state.lang_id}

@@ -1,5 +1,7 @@
 
 .ConvertView {
+  min-height: 65vh;
+
   .items {
       display: grid;
       grid-template-columns: 0fr  1fr 0fr;

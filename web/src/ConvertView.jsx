@@ -121,7 +121,7 @@ class ConvertView extends utils.BaseComponent {
     );
 
     return (
-      <div className="ConvertView widget">
+      <div className="ConvertView widget widget2x">
         <h2>Convert between languages</h2>
         <div className="items">{elts}</div>
       </div>
