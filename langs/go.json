@@ -1,0 +1,165 @@
+{
+  "id": "go",
+  "name": "Go Lang",
+  "docs": "https://golang.org/pkg/time/#Time.Format",
+  "example": "\/\/ Format returns a textual representation of the time value\n\/\/ formatted according to layout, which defines the format\n\/\/ by showing how the reference time, defined to be:\n\n\/\/     Mon Jan 2 15:04:05 -0700 MST 2006\n\nimport (\n    \"fmt\"\n    \"time\"\n)\n\nfunc main() {\n    t, err := time.Parse(time.UnixDate, \"Sat Mar  7 11:06:39 PST 2015\")\n    if err != nil { panic(err) }\n    t.Format(\"Mon Jan 2 15:04:05 MST 2006\")\n}",
+  "notes": "",
+  "formats": [
+    {
+      "cat": "year",
+      "id": "Y",
+      "code": "2006",
+      "example": "2006"
+    },
+    {
+      "cat": "year",
+      "id": "y",
+      "code": "06",
+      "example": "06"
+    },
+    {
+      "cat": "month",
+      "id": "-m",
+      "code": "1",
+      "example": "1"
+    },
+    {
+      "cat": "month",
+      "id": "m",
+      "code": "01",
+      "example": "01"
+    },
+    {
+      "cat": "month",
+      "id": "B",
+      "code": "January",
+      "example": "January"
+    },
+    {
+      "cat": "month",
+      "id": "b",
+      "code": "Jan",
+      "example": "Jan"
+    },
+    {
+      "cat": "day",
+      "id": "-d",
+      "code": "2",
+      "example": "2"
+    },
+    {
+      "cat": "day",
+      "id": "d",
+      "code": "02",
+      "example": "02"
+    },
+    {
+      "cat": "ampm",
+      "id": "p",
+      "code": "PM",
+      "example": "AM PM"
+    },
+    {
+      "cat": "ampm",
+      "id": "momentjs:a",
+      "code": "pm",
+      "example": "am pm"
+    },
+    {
+      "cat": "hour",
+      "id": "H",
+      "code": "15",
+      "example": "15"
+    },
+    {
+      "cat": "hour",
+      "id": "-I",
+      "code": "3",
+      "example": "3"
+    },
+    {
+      "cat": "hour",
+      "id": "I",
+      "code": "03",
+      "example": "03"
+    },
+    {
+      "cat": "minute",
+      "id": "-M",
+      "code": "4",
+      "example": "4"
+    },
+    {
+      "cat": "minute",
+      "id": "M",
+      "code": "04",
+      "example": "04"
+    },
+    {
+      "cat": "second",
+      "id": "-S",
+      "code": "5",
+      "example": "5"
+    },
+    {
+      "cat": "second",
+      "id": "S",
+      "code": "05",
+      "example": "05"
+    },
+    {
+      "cat": "fractionalsecond",
+      "id": "momentjs:S",
+      "code": ".0",
+      "example": ".0"
+    },
+    {
+      "cat": "fractionalsecond",
+      "id": "momentjs:SS",
+      "code": ".00",
+      "example": ".00"
+    },
+    {
+      "cat": "fractionalsecond",
+      "id": "momentjs:SSS",
+      "code": ".000",
+      "example": ".000"
+    },
+    {
+      "cat": "fractionalsecond",
+      "id": "f",
+      "code": ".000000",
+      "example": ".000000"
+    },
+    {
+      "cat": "timezone",
+      "id": "Z",
+      "code": "MST",
+      "example": "MST"
+    },
+    {
+      "cat": "timezone",
+      "id": "momentjs:Z",
+      "code": "-07:00",
+      "example": "-07:00"
+    },
+    {
+      "cat": "timezone",
+      "id": "z",
+      "code": "-0700",
+      "example": "-0700"
+    },
+    {
+      "cat": "dayofweek",
+      "id": "a",
+      "code": "Mon",
+      "example": "Mon"
+    },
+    {
+      "cat": "dayofweek",
+      "id": "A",
+      "code": "Monday",
+      "example": "Monday"
+    }
+  ]
+}
