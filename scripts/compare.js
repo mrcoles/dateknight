@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const util = require('./util');
 
 
@@ -216,30 +218,52 @@ function _setdefault(obj, key, default_func) {
 //
 
 function main() {
-  let args = require('optimist').argv;
-  let help = ('Usage: node compare.js [OPTIONS] <crawled_dir> <langs_dir>\n\n' +
-              'OPTIONS:\n\n' +
-              ' --missing  - only show the missing fields\n' +
-              ' --overlaps - only show the overlaps\n' +
-              ' --verbose  - print json-friendly verbose output\n' +
-              '\nEx: node scripts/compare.js crawl/.crawls/ langs/');
+  const minimist = require('minimist');
 
-  if (args.h || args.help || args._.length !== 2) {
+  let help = (`
+    Usage
+      $ node compare.js [OPTIONS] <crawled_dir> <langs_dir>
+
+    Options
+      --missing, -m   only show the missing fields
+      --overlaps, -o  only show the overlaps
+      --verbose, -v   print data-friendly (json or tsv) output
+      --help, -h      print out help info
+
+    Examples
+      $ node scripts/compare.js --missing -v crawl/.crawls langs/
+    `);
+
+  let args = minimist(process.argv.slice(2), {
+    _: ['crawled_dir', 'langs_dir'],
+    help: true,
+    boolean: ['verbose', 'missing', 'overlaps'],
+    alias: { v: 'verbose', m: 'missing', o: 'overlaps', h: 'help' },
+  });
+
+  const _exit = (code) => {
     console.log(help);
-    process.exit(1);
-  } else if (args._.filter(_dir_exists).length > 0) {
+    process.exit(code || 0);
+  }
+
+
+  if (args.help) {
+    _exit();
+  } else if (args._.length !== 2) {
+    console.log('Must specify both directories!\n');
+    _exit(1);
+  } else if (args._.filter(_dir_exists).length !== 2) {
     console.log('One or more of the specified directories do not exist.\n');
-    console.log(help);
-    process.exit(1);
+    _exit(1);
   }
 
   let crawled_dir = args._[0];
   let langs_dir = args._[1];
 
   let opts = {
-    verbose: args.verbose || args.v,
+    verbose: args.verbose,
     missing: args.missing,
-    overlaps: args.overlaps,
+    overlaps: args.overlaps
   }
 
   compare(crawled_dir, langs_dir, opts);
