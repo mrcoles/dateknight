@@ -21,6 +21,20 @@
     },
     {
       "cat": "month",
+      "id": "-m",
+      "code": "n",
+      "example": "'1' to '12'",
+      "info": "Month without leading zeros."
+    },
+    {
+      "cat": "month",
+      "id": "m",
+      "code": "m",
+      "example": "'01' to '12'",
+      "info": "Month, 2 digits with leading zeros."
+    },
+    {
+      "cat": "month",
       "id": "B",
       "code": "F",
       "example": "June",
@@ -35,17 +49,24 @@
     },
     {
       "cat": "month",
-      "id": "-m",
-      "code": "n",
-      "example": "'1' to '12'",
-      "info": "Month without leading zeros."
+      "id": "django:b",
+      "code": "b",
+      "example": "jan",
+      "info": "Month, textual, 3 letters, lowercase."
+    },
+    {
+      "cat": "",
+      "id": "",
+      "code": "N",
+      "example": "'Jan.', 'Feb.', 'March', 'May'",
+      "info": "Month abbreviation in Associated Press\nstyle. Proprietary extension."
     },
     {
       "cat": "month",
-      "id": "m",
-      "code": "m",
-      "example": "'01' to '12'",
-      "info": "Month, 2 digits with leading zeros."
+      "id": "django:E",
+      "code": "E",
+      "example": "'listopada' (for Polish locale, as opposed to 'Listopad')",
+      "info": "Month, locale specific alternative\nrepresentation usually used for long\ndate representation."
     },
     {
       "cat": "day",
@@ -67,6 +88,13 @@
       "code": "A",
       "example": "AM",
       "info": "'AM' or 'PM'."
+    },
+    {
+      "cat": "ampm",
+      "id": "django:a",
+      "code": "a",
+      "example": "'a.m.'",
+      "info": "'a.m.' or 'p.m.' (Note that\nthis is slightly different than PHP’s\noutput, because this includes periods\nto match Associated Press style.)"
     },
     {
       "cat": "hour",
@@ -111,7 +139,14 @@
       "info": "Seconds, 2 digits with leading zeros."
     },
     {
-      "cat": "microsecond",
+      "cat": "second",
+      "id": "django:U",
+      "code": "U",
+      "example": "'1516596801'",
+      "info": "Seconds since the Unix Epoch\n(January 1 1970 00:00:00 UTC)."
+    },
+    {
+      "cat": "fractionalsecond",
       "id": "f",
       "code": "u",
       "example": "000000 to 999999",
@@ -132,7 +167,21 @@
       "info": "Difference to Greenwich time in hours."
     },
     {
-      "cat": "weeknumber",
+      "cat": "timezone",
+      "id": "django:T",
+      "code": "T",
+      "example": "'EST', 'MDT'",
+      "info": "Time zone of this machine."
+    },
+    {
+      "cat": "timezone",
+      "id": "django:Z",
+      "code": "Z",
+      "example": "-43200 to 43200",
+      "info": "Time zone offset in seconds. The\noffset for timezones west of UTC is\nalways negative, and for those east of\nUTC is always positive."
+    },
+    {
+      "cat": "weekofyear",
       "id": "W",
       "code": "W",
       "example": "1, 53",
@@ -146,25 +195,88 @@
       "info": "Day of the year."
     },
     {
-      "cat": "weekday",
+      "cat": "dayofweek",
       "id": "a",
       "code": "D",
       "example": "Fri",
       "info": "Day of the week, textual, 3 letters."
     },
     {
-      "cat": "weekday",
+      "cat": "dayofweek",
       "id": "A",
       "code": "l",
       "example": "Friday",
       "info": "Day of the week, textual, long."
     },
     {
-      "cat": "weekday",
+      "cat": "dayofweek",
       "id": "w",
       "code": "w",
       "example": "'0' (Sunday) to '6' (Saturday)",
       "info": "Day of the week, digits without leading zeros."
+    },
+    {
+      "cat": "misc",
+      "id": "django:c",
+      "code": "c",
+      "example": "2008-01-02T10:30:00.000123+02:00,\nor 2008-01-02T10:30:00.000123 if the datetime is naive",
+      "info": "ISO 8601 format. (Note: unlike others\nformatters, such as “Z”, “O” or “r”,\nthe “c” formatter will not add timezone\noffset if value is a naive datetime\n(see datetime.tzinfo)."
+    },
+    {
+      "cat": "misc",
+      "id": "django:f",
+      "code": "f",
+      "example": "'1', '1:30'",
+      "info": "Time, in 12-hour hours and minutes,\nwith minutes left off if they’re zero.\nProprietary extension."
+    },
+    {
+      "cat": "misc",
+      "id": "django:P",
+      "code": "P",
+      "example": "'1 a.m.', '1:30 p.m.', 'midnight', 'noon', '12:30 p.m.'",
+      "info": "Time, in 12-hour hours, minutes and\n‘a.m.’/’p.m.’, with minutes left off\nif they’re zero and the special-case\nstrings ‘midnight’ and ‘noon’ if\nappropriate. Proprietary extension."
+    },
+    {
+      "cat": "misc",
+      "id": "django:r",
+      "code": "r",
+      "example": "'Thu, 21 Dec 2000 16:01:07 +0200'",
+      "info": "RFC 5322 formatted date."
+    },
+    {
+      "cat": "misc",
+      "id": "django:S",
+      "code": "S",
+      "example": "'st', 'nd', 'rd' or 'th'",
+      "info": "English ordinal suffix for day of the\nmonth, 2 characters."
+    },
+    {
+      "cat": "misc",
+      "id": "django:t",
+      "code": "t",
+      "example": "28 to 31",
+      "info": "Number of days in the given month."
+    },
+    {
+      "cat": "misc",
+      "id": "django:I",
+      "code": "I",
+      "example": "'1' or '0'",
+      "info": "Daylight Savings Time, whether it’s\nin effect or not."
+    },
+    {
+      "cat": "",
+      "id": "",
+      "code": "L",
+      "example": "True or False",
+      "info": "Boolean for whether it’s a leap year."
+    },
+    {
+      "cat": "misc",
+      "id": "django:o",
+      "code": "o",
+      "example": "'1999'",
+      "info": "ISO-8601 week-numbering year,\ncorresponding to the ISO-8601 week\nnumber (W) which uses leap weeks. See Y\nfor the more common year format."
     }
   ]
 }

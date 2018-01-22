@@ -18,11 +18,18 @@ function load_json_files(directory) {
   return src_files.map(fname => {
     const filepath = directory + fname;
     const contents = fs.readFileSync(filepath, {encoding: 'utf8'});
+    let data;
+
+    try {
+      data = JSON.parse(contents)
+    } catch(e) {
+      throw new Error(`Error parsing JSON for ${fname}: "${e}"`);
+    }
     return {
       path: filepath,
       filename: fname,
       basename: path.basename(fname, '.json'),
-      data: JSON.parse(contents)
+      data: data
     }
   });
 }

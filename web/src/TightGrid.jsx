@@ -61,10 +61,10 @@ class TightGrid extends BaseComponent {
       }
 
       let info_link = !fmt.info ? null : (
-        <a className="info-link" href="#"
+        <button className="info-link"
            onClick={(e) => this.handleToggleExpand(e, exp_key, !expanded)}>
           (<span className="mono">{expanded ? '–' : '+'}</span> info)
-        </a>
+        </button>
       );
 
       let info_content = !fmt.info || !expanded ? null : (
@@ -85,10 +85,10 @@ class TightGrid extends BaseComponent {
     });
 
     let all_info_link = !has_info ? null : (
-      <a className="info-link" href="#"
+      <button className="info-link"
          onClick={(e) => this.toggleAllExpands(e, !all_expanded)}>
         (<span className="mono">{all_expanded ? '–' : '+'}</span> infos)
-      </a>
+      </button>
     );
 
     return (

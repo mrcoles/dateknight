@@ -11,11 +11,6 @@ class LangSelector extends BaseComponent {
     this._bind('handleClick');
   }
 
-  handleClick(evt, lang) {
-    evt.preventDefault();
-    this.props.updateLangId(lang.id);
-  }
-
   render() {
     let langs = this.props.langs;
 
@@ -25,8 +20,7 @@ class LangSelector extends BaseComponent {
         <span className="options">
           {langs.map(l => (
             <a href={'#' + l.id}
-               key={l.id}
-               onClick={(e) => this.handleClick(e, l)}>
+               key={l.id}>
               {l.name}
             </a>
           ))}

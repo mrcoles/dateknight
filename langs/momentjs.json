@@ -3,7 +3,7 @@
   "name": "MomentJS",
   "docs": "https://momentjs.com/docs/#/displaying/format/",
   "example": "moment().format();                                // \"2014-09-08T08:02:17-05:00\" (ISO 8601)\nmoment().format(\"dddd, MMMM Do YYYY, h:mm:ss a\"); // \"Sunday, February 14th 2010, 3:25:50 pm\"\nmoment().format(\"ddd, hA\");                       // \"Sun, 3PM\"\nmoment('gibberish').format('YYYY MM DD');         // \"Invalid date\"'",
-  "notes": "(i) should I make the category the info and the 'Output' the example? (ii) I like moments organization of stuff, maybe start using this? (iii) change microsecond cat to fractional seconds? (iv) what about z or zz both being valid (v) what about some of the ISO and Unix stuff? (vi) explanation of iso weeknumber (https://stackoverflow.com/a/6090287/376489)",
+  "notes": "(i) should I make the category the info and the 'Output' the example? (ii) I like moments organization of stuff, maybe start using this? (iii) change microsecond cat to fractional seconds? (iv) what about z or zz both being valid (v) what about some of the ISO and Unix stuff? (vi) explanation of iso weekofyear (https://stackoverflow.com/a/6090287/376489)",
   "formats": [
     {
       "cat": "year",
@@ -13,27 +13,15 @@
     },
     {
       "cat": "year",
-      "id": "y",
-      "code": "YY",
-      "example": "70 71 ... 29 30"
-    },
-    {
-      "cat": "year",
-      "id": "?",
+      "id": "momentjs:Y",
       "code": "Y",
       "example": "1970 1971 ... 9999 +10000 +10001 \nNote: This complies with the ISO 8601 standard for dates past the year 9999"
     },
     {
-      "cat": "month",
-      "id": "B",
-      "code": "MMMM",
-      "example": "January February ... November December"
-    },
-    {
-      "cat": "month",
-      "id": "b",
-      "code": "MMM",
-      "example": "Jan Feb ... Nov Dec"
+      "cat": "year",
+      "id": "y",
+      "code": "YY",
+      "example": "70 71 ... 29 30"
     },
     {
       "cat": "month",
@@ -49,19 +37,31 @@
     },
     {
       "cat": "month",
-      "id": "?",
+      "id": "momentjs:Mo",
       "code": "Mo",
       "example": "1st 2nd ... 11th 12th"
     },
     {
+      "cat": "month",
+      "id": "B",
+      "code": "MMMM",
+      "example": "January February ... November December"
+    },
+    {
+      "cat": "month",
+      "id": "b",
+      "code": "MMM",
+      "example": "Jan Feb ... Nov Dec"
+    },
+    {
       "cat": "quarter",
-      "id": "?",
+      "id": "momentjs:Q",
       "code": "Q",
       "example": "1 2 3 4"
     },
     {
       "cat": "quarter",
-      "id": "?",
+      "id": "momentjs:Qo",
       "code": "Qo",
       "example": "1st 2nd 3rd 4th"
     },
@@ -79,7 +79,7 @@
     },
     {
       "cat": "day",
-      "id": "?",
+      "id": "momentjs:Do",
       "code": "Do",
       "example": "1st 2nd ... 30th 31st"
     },
@@ -91,7 +91,7 @@
     },
     {
       "cat": "ampm",
-      "id": "?",
+      "id": "momentjs:a",
       "code": "a",
       "example": "am pm"
     },
@@ -121,13 +121,13 @@
     },
     {
       "cat": "hour",
-      "id": "?",
+      "id": "momentjs:k",
       "code": "k",
       "example": "1 2 ... 23 24"
     },
     {
       "cat": "hour",
-      "id": "?",
+      "id": "momentjs:kk",
       "code": "kk",
       "example": "01 02 ... 23 24"
     },
@@ -156,7 +156,32 @@
       "example": "00 01 ... 58 59"
     },
     {
-      "cat": "microsecond",
+      "cat": "fractionalsecond",
+      "id": "momentjs:S",
+      "code": "S",
+      "example": "0 1 ... 8 9"
+    },
+    {
+      "cat": "fractionalsecond",
+      "id": "momentjs:SS",
+      "code": "SS",
+      "example": "00 01 ... 98 99"
+    },
+    {
+      "cat": "fractionalsecond",
+      "id": "momentjs:SSS",
+      "code": "SSS",
+      "example": "000 001 ... 998 999"
+    },
+    {
+      "cat": "fractionalsecond",
+      "id": "?",
+      "code": "SSSS ... SSSSSSSSS",
+      "example": "000[0..] 001[0..] ... 998[0..] 999[0..]",
+      "info": ""
+    },
+    {
+      "cat": "fractionalsecond",
       "id": "f",
       "code": "SSSSSS",
       "example": "000000 000001 ... 999998 999999"
@@ -169,7 +194,7 @@
     },
     {
       "cat": "timezone",
-      "id": "?",
+      "id": "momentjs:Z",
       "code": "Z",
       "example": "-07:00 -06:00 ... +06:00 +07:00"
     },
@@ -180,38 +205,38 @@
       "example": "-0700 -0600 ... +0600 +0700"
     },
     {
-      "cat": "weeknumber",
+      "cat": "weekofyear",
       "id": "W",
       "code": "w",
       "example": "1 2 ... 52 53"
     },
     {
-      "cat": "weeknumber",
-      "id": "?",
+      "cat": "weekofyear",
+      "id": "momentjs:wo",
       "code": "wo",
       "example": "1st 2nd ... 52nd 53rd"
     },
     {
-      "cat": "weeknumber",
-      "id": "?",
+      "cat": "weekofyear",
+      "id": "momentjs:ww",
       "code": "ww",
       "example": "01 02 ... 52 53"
     },
     {
-      "cat": "weeknumber",
+      "cat": "weekofyear",
       "id": "W",
       "code": "W",
       "example": "(ISO) 1 2 ... 52 53"
     },
     {
-      "cat": "weeknumber",
-      "id": "?",
+      "cat": "weekofyear",
+      "id": "momentjs:Wo",
       "code": "Wo",
       "example": "(ISO) 1st 2nd ... 52nd 53rd"
     },
     {
-      "cat": "weeknumber",
-      "id": "?",
+      "cat": "weekofyear",
+      "id": "momentjs:WW",
       "code": "WW",
       "example": "(ISO) 01 02 ... 52 53"
     },
@@ -223,7 +248,7 @@
     },
     {
       "cat": "dayofyear",
-      "id": "?",
+      "id": "momentjs::DDDo",
       "code": "DDDo",
       "example": "1st 2nd ... 364th 365th"
     },
@@ -234,34 +259,82 @@
       "example": "001 002 ... 364 365"
     },
     {
-      "cat": "weekday",
+      "cat": "dayofweek",
       "id": "w",
       "code": "d",
       "example": "0 1 ... 5 6"
     },
     {
-      "cat": "weekday",
-      "id": "?",
+      "cat": "dayofweek",
+      "id": "momentjs:do",
       "code": "do",
       "example": "0th 1st ... 5th 6th"
     },
     {
-      "cat": "weekday",
-      "id": "?",
+      "cat": "dayofweek",
+      "id": "momentjs:dd",
       "code": "dd",
       "example": "Su Mo ... Fr Sa"
     },
     {
-      "cat": "weekday",
+      "cat": "dayofweek",
       "id": "a",
       "code": "ddd",
       "example": "Sun Mon ... Fri Sat"
     },
     {
-      "cat": "weekday",
+      "cat": "dayofweek",
       "id": "A",
       "code": "dddd",
       "example": "Sunday Monday ... Friday Saturday"
+    },
+    {
+      "cat": "dayofweek",
+      "id": "momentjs:e",
+      "code": "e",
+      "example": "(Locale) 0 1 ... 5 6"
+    },
+    {
+      "cat": "dayofweek",
+      "id": "momentjs:E",
+      "code": "E",
+      "example": "(ISO) 1 2 ... 6 7"
+    },
+    {
+      "cat": "misc",
+      "id": "momentjs:X",
+      "code": "X",
+      "example": "(Unix timestamp) 1360013296"
+    },
+    {
+      "cat": "misc",
+      "id": "momentjs:x",
+      "code": "x",
+      "example": "(Unix millisecond timestamp) 1360013296123"
+    },
+    {
+      "cat": "misc",
+      "id": "momentjs:gg",
+      "code": "gg",
+      "example": "(Week year) 70 71 ... 29 30"
+    },
+    {
+      "cat": "misc",
+      "id": "momentjs:gggg",
+      "code": "gggg",
+      "example": "(Week year) 1970 1971 ... 2029 2030"
+    },
+    {
+      "cat": "misc",
+      "id": "momentjs:GG",
+      "code": "GG",
+      "example": "(Week year ISO) 70 71 ... 29 30"
+    },
+    {
+      "cat": "misc",
+      "id": "momentjs:GGGG",
+      "code": "GGGG",
+      "example": "(Week year ISO) 1970 1971 ... 2029 2030"
     }
   ]
 }

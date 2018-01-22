@@ -30,20 +30,6 @@
     },
     {
       "cat": "month",
-      "id": "B",
-      "code": "%B",
-      "example": "June",
-      "info": "Month as locale\u2019s full name."
-    },
-    {
-      "cat": "month",
-      "id": "b",
-      "code": "%b",
-      "example": "Jun",
-      "info": "Month as locale\u2019s abbreviated name."
-    },
-    {
-      "cat": "month",
       "id": "-m",
       "code": "%-m",
       "example": "1",
@@ -55,6 +41,20 @@
       "code": "%m",
       "example": "01",
       "info": "Month as a zero-padded decimal number."
+    },
+    {
+      "cat": "month",
+      "id": "B",
+      "code": "%B",
+      "example": "June",
+      "info": "Month as locale\u2019s full name."
+    },
+    {
+      "cat": "month",
+      "id": "b",
+      "code": "%b",
+      "example": "Jun",
+      "info": "Month as locale\u2019s abbreviated name."
     },
     {
       "cat": "day",
@@ -134,7 +134,7 @@
       "info": "Second as a zero-padded decimal number."
     },
     {
-      "cat": "microsecond",
+      "cat": "fractionalsecond",
       "id": "f",
       "code": "%f",
       "example": "000001",
@@ -155,14 +155,14 @@
       "info": "UTC offset in the form +HHMM or -HHMM (empty string if the the object is naive)."
     },
     {
-      "cat": "weeknumber",
+      "cat": "weekofyear",
       "id": "U",
       "code": "%U",
       "example": "00, 01, \u2026, 53",
       "info": "Week number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0."
     },
     {
-      "cat": "weeknumber",
+      "cat": "weekofyear",
       "id": "W",
       "code": "%W",
       "example": "00, 01, \u2026, 53",
@@ -183,25 +183,46 @@
       "info": "Day of the year as a zero-padded decimal number."
     },
     {
-      "cat": "weekday",
+      "cat": "dayofweek",
       "id": "a",
       "code": "%a",
       "example": "Mon",
       "info": "Weekday as locale\u2019s abbreviated name."
     },
     {
-      "cat": "weekday",
+      "cat": "dayofweek",
       "id": "A",
       "code": "%A",
       "example": "Monday",
       "info": "Weekday as locale\u2019s full name."
     },
     {
-      "cat": "weekday",
+      "cat": "dayofweek",
       "id": "w",
       "code": "%w",
       "example": "1",
       "info": "Weekday as a decimal number, where 0 is Sunday and 6 is Saturday."
+    },
+    {
+      "cat": "misc",
+      "id": "c",
+      "code": "%c",
+      "example": "Mon Sep 30 07:06:05 2013",
+      "info": "Locale’s appropriate date and time representation."
+    },
+    {
+      "cat": "misc",
+      "id": "x",
+      "code": "%x",
+      "example": "09/30/13",
+      "info": "Locale’s appropriate date representation."
+    },
+    {
+      "cat": "misc",
+      "id": "X",
+      "code": "%X",
+      "example": "07:06:05",
+      "info": "Locale’s appropriate time representation."
     }
   ]
 }
