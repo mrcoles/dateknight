@@ -2,11 +2,9 @@ const fs = require('fs');
 
 const util = require('./util');
 
-
 // Compare
 // =======
 //
-// REM TODO - update this dir
 //
 
 function compare(crawled_dir, langs_dir, opts) {
@@ -49,21 +47,22 @@ function compare(crawled_dir, langs_dir, opts) {
       console.log('OVERLAPS...\n');
     }
     console.log(overlaps_out);
-  }  
+  }
 }
-
 
 // ### Helpers
 //
-
 
 // Missing codes
 
 function _findMissingCodes(crawls, langs) {
   // data structures to make comparing easier
-  let all_ids = [];  
+  let all_ids = [];
   let id_to_crawl = {};
   let id_to_lang = {};
+
+  // lang files can specify codes to ignore in this function
+  let id_to_ignore_missing = {};
 
   crawls.forEach(crawl => {
     let id = crawl.basename;
@@ -77,79 +76,101 @@ function _findMissingCodes(crawls, langs) {
     if (!id_to_crawl[id]) {
       all_ids.push(id);
     }
+
+    id_to_ignore_missing[id] = new Set(lang.ignore_missing || []);
   });
 
-  return all_ids.map(id => _findMissingCodesForId(id, id_to_crawl[id], id_to_lang[id]));
+  return all_ids.map(id =>
+    _findMissingCodesForId(
+      id,
+      id_to_crawl[id],
+      id_to_lang[id],
+      id_to_ignore_missing[id]
+    )
+  );
 }
 
+function _findMissingCodesForId(id, crawl_data, lang_data, ignore_missing) {
+  const _filter_missing = arr =>
+    arr.filter(d => ignore_missing.has('*') || ignore_missing.has(d.code));
 
-function _findMissingCodesForId(id, crawl_data, lang_data) {
-  crawl_data = crawl_data || [];
-  lang_data = lang_data || [];
+  crawl_data = _filter_missing(crawl_data || []);
+  lang_data = _filter_missing(lang_data || []);
 
   let crawl_codes = new Set(crawl_data.map(d => d.code));
   let lang_codes = new Set(lang_data.map(d => d.code));
 
   const _keys = ['cat', 'id', 'code', 'example', 'info'];
-  const _update_keys = (fmt) => {
+  const _update_keys = fmt => {
     let d = {};
-    _keys.forEach(k => d[k] = fmt[k] || '');
+    _keys.forEach(k => (d[k] = fmt[k] || ''));
     return d;
-  }
+  };
 
   let langs = crawl_data.filter(d => !lang_codes.has(d.code)).map(_update_keys);
-  let crawls = lang_data.filter(d => !crawl_codes.has(d.code)).map(_update_keys);
+  let crawls = lang_data
+    .filter(d => !crawl_codes.has(d.code))
+    .map(_update_keys);
 
   return { id, crawls, langs };
 }
 
-
 function _getMissingDisplay(missing, verbose) {
-  return verbose ? _getMissingDisplayJson(missing) : _getMissingDisplayText(missing);
+  return verbose
+    ? _getMissingDisplayJson(missing)
+    : _getMissingDisplayText(missing);
 }
-
 
 function _getMissingDisplayJson(missing) {
-  return missing.map(({ id, crawls, langs }) => {
-    if (crawls.length || langs.length) {
-      let out = `// ${id}`
-      let nvs = [{name: 'crawls', vals: crawls}, {name: 'langs', vals: langs}];
+  return missing
+    .map(({ id, crawls, langs }) => {
+      if (crawls.length || langs.length) {
+        let out = `// ${id}`;
+        let nvs = [
+          { name: 'crawls', vals: crawls },
+          { name: 'langs', vals: langs }
+        ];
 
-      nvs.forEach(({ name, vals }) => {
-        if (vals.length) {
-          out += `\n\n// ${id} > missing from ${name}\n\n`;
-          out += JSON.stringify(vals, null, 2);
-        }
-      });
+        nvs.forEach(({ name, vals }) => {
+          if (vals.length) {
+            out += `\n\n// ${id} > missing from ${name}\n\n`;
+            out += JSON.stringify(vals, null, 2);
+          }
+        });
 
-      return out;
-    }
-    return null;
-  }).filter(x => x).join('\n\n');
+        return out;
+      }
+      return null;
+    })
+    .filter(x => x)
+    .join('\n\n');
 }
-
 
 function _getMissingDisplayText(missing) {
-  return missing.map(({ id, crawls, langs }) => {
-    if (crawls.length || langs.length) {
-      let out = `### ${id}`
-      let nvs = [{name: 'crawls', vals: crawls}, {name: 'langs', vals: langs}];
+  return missing
+    .map(({ id, crawls, langs }) => {
+      if (crawls.length || langs.length) {
+        let out = `### ${id}`;
+        let nvs = [
+          { name: 'crawls', vals: crawls },
+          { name: 'langs', vals: langs }
+        ];
 
-      nvs.forEach(({ name, vals }) => {
-        if (vals.length) {
-          let rows = vals.map(v => `*   ${v.code}`).join('\n');
-          out += `\n\n#### ${id} > missing in ${name}\n\n${rows}`;
-        }
-      });
+        nvs.forEach(({ name, vals }) => {
+          if (vals.length) {
+            let rows = vals.map(v => `*   ${v.code}`).join('\n');
+            out += `\n\n#### ${id} > missing in ${name}\n\n${rows}`;
+          }
+        });
 
-      return out;
-    }
+        return out;
+      }
 
-    return null;
-
-  }).filter(x => x).join('\n\n');
+      return null;
+    })
+    .filter(x => x)
+    .join('\n\n');
 }
-
 
 // Overlaps
 
@@ -170,9 +191,10 @@ function _findLangOverlaps(langs) {
   return fmt_id_to_langs;
 }
 
-
 function _getLangOverlapsDisplay(overlaps, verbose) {
-  return verbose ? _getLangOverlapsDisplayTsv(overlaps) : _getLangOverlapsDisplayText(overlaps);
+  return verbose
+    ? _getLangOverlapsDisplayTsv(overlaps)
+    : _getLangOverlapsDisplayText(overlaps);
 }
 
 function _getLangOverlapsDisplayTsv(overlaps) {
@@ -180,29 +202,36 @@ function _getLangOverlapsDisplayTsv(overlaps) {
 
   const cols = ['id', 'lang_id', 'cat', 'code', 'example', 'info'];
   const delim = '\t';
-  const escape = (x) => x ? x.replace(/[\n\t]/g, ' ') : '';
+  const escape = x => (x ? x.replace(/[\n\t]/g, ' ') : '');
 
-  let rows = Object.entries(overlaps).map(([ fmt_id, fmts ]) => {
-    return fmts.map(f => {
-      return cols.map(c => escape(f[c])).join(delim);
-    }).join('\n');
-  }).join('\n');
+  let rows = Object.entries(overlaps)
+    .map(([fmt_id, fmts]) => {
+      return fmts
+        .map(f => {
+          return cols.map(c => escape(f[c])).join(delim);
+        })
+        .join('\n');
+    })
+    .join('\n');
 
   return `${cols.join(delim)}\n${rows}`;
 }
 
 function _getLangOverlapsDisplayText(overlaps) {
   // fmt_id -> [{ lang_id, cat, id, code, example, info }, ... ]
-  return Object.entries(overlaps).map(([ fmt_id, fmts ]) => {
-    let cats_set = new Set(fmts.map(f => f.cat));
-    let cats = Array.from(cats_set);
+  return Object.entries(overlaps)
+    .map(([fmt_id, fmts]) => {
+      let cats_set = new Set(fmts.map(f => f.cat));
+      let cats = Array.from(cats_set);
 
-    let langs = fmts.map(f => f.lang_id)
+      let langs = fmts.map(f => f.lang_id);
 
-    return `${fmt_id}\tcats  (${cats.length}):\t${cats.join(', ')}\n\tlangs (${langs.length}):\t${langs.join(', ')}\n`;
-  }).join('\n');
+      return `${fmt_id}\tcats  (${cats.length}):\t${cats.join(
+        ', '
+      )}\n\tlangs (${langs.length}):\t${langs.join(', ')}\n`;
+    })
+    .join('\n');
 }
-
 
 // Misc
 
@@ -213,14 +242,13 @@ function _setdefault(obj, key, default_func) {
   return obj[key];
 }
 
-
 // ### Main runner
 //
 
 function main() {
   const minimist = require('minimist');
 
-  let help = (`
+  let help = `
     Usage
       $ node compare.js [OPTIONS] <crawled_dir> <langs_dir>
 
@@ -232,20 +260,19 @@ function main() {
 
     Examples
       $ node scripts/compare.js --missing -v crawl/.crawls langs/
-    `);
+    `;
 
   let args = minimist(process.argv.slice(2), {
     _: ['crawled_dir', 'langs_dir'],
     help: true,
     boolean: ['verbose', 'missing', 'overlaps'],
-    alias: { v: 'verbose', m: 'missing', o: 'overlaps', h: 'help' },
+    alias: { v: 'verbose', m: 'missing', o: 'overlaps', h: 'help' }
   });
 
-  const _exit = (code) => {
+  const _exit = code => {
     console.log(help);
     process.exit(code || 0);
-  }
-
+  };
 
   if (args.help) {
     _exit();
@@ -264,21 +291,19 @@ function main() {
     verbose: args.verbose,
     missing: args.missing,
     overlaps: args.overlaps
-  }
+  };
 
   compare(crawled_dir, langs_dir, opts);
 }
-
 
 function _dir_exists(path) {
   var stat = null;
   try {
     stat = fs.lstatSync(path);
-  } catch(e) {}
+  } catch (e) {}
 
   return stat !== null && stat.isDirectory();
 }
-
 
 if (require.main === module) {
   main();

@@ -161,5 +161,6 @@
       "code": "Monday",
       "example": "Monday"
     }
-  ]
+  ],
+  "ignore_missing": ["*"]
 }

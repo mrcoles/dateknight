@@ -336,5 +336,6 @@
       "code": "GGGG",
       "example": "(Week year ISO) 1970 1971 ... 2029 2030"
     }
-  ]
+  ],
+  "ignore_missing": ["SSSSSS", "z", "z or zz"]
 }

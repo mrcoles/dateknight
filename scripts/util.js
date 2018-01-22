@@ -1,14 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
-
-const LANGS_DIR = './langs/';
-
+const LANGS_DIR = path.join(__dirname, '..', 'langs/');
 
 function get_langs() {
   return load_json_files(LANGS_DIR);
 }
-
 
 function load_json_files(directory) {
   const src_files = fs.readdirSync(directory).filter(f => /\.json$/.test(f));
@@ -16,13 +13,13 @@ function load_json_files(directory) {
   src_files.sort();
 
   return src_files.map(fname => {
-    const filepath = directory + fname;
-    const contents = fs.readFileSync(filepath, {encoding: 'utf8'});
+    const filepath = path.join(directory, fname);
+    const contents = fs.readFileSync(filepath, { encoding: 'utf8' });
     let data;
 
     try {
-      data = JSON.parse(contents)
-    } catch(e) {
+      data = JSON.parse(contents);
+    } catch (e) {
       throw new Error(`Error parsing JSON for ${fname}: "${e}"`);
     }
     return {
@@ -30,10 +27,9 @@ function load_json_files(directory) {
       filename: fname,
       basename: path.basename(fname, '.json'),
       data: data
-    }
+    };
   });
 }
-
 
 // ## Exports
 //

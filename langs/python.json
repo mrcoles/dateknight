@@ -224,5 +224,6 @@
       "example": "07:06:05",
       "info": "Locale’s appropriate time representation."
     }
-  ]
+  ],
+  "ignore_missing": ["%%"]
 }

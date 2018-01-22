@@ -278,5 +278,6 @@
       "example": "'1999'",
       "info": "ISO-8601 week-numbering year,\ncorresponding to the ISO-8601 week\nnumber (W) which uses leap weeks. See Y\nfor the more common year format."
     }
-  ]
+  ],
+  "ignore_missing": ["B"]
 }
