@@ -1,7 +1,7 @@
 import React from 'react';
 import { BaseComponent } from './utils/component.js';
 import { scrollDelayed } from './utils/scroll.js';
-import { LangRouter, ConvertRouter } from './utils/urls.js';
+import { LangRouter, ConvertRouter, getLangId } from './utils/urls.js';
 
 import './compiled/LangSelector.css';
 
@@ -15,7 +15,9 @@ class LangSelector extends BaseComponent {
 
   render() {
     let langs = this.props.langs;
-    let convert_url = ConvertRouter.format(this.props.lang_id);
+
+    let convert_lang_id = getLangId(this.props.langs);
+    let convert_url = ConvertRouter.format(convert_lang_id);
 
     return (
       <div className="LangSelector widget">
