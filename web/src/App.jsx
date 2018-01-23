@@ -31,7 +31,7 @@ class App extends BaseComponent {
         />
         <div className="container main">
           <h1>
-            Date Knight
+            <a href="https://mrcoles.com/dateknight/">Date Knight</a>
             <small>
               A universal date time string{' '}
               <span className="nowrap">formatting reference</span>
