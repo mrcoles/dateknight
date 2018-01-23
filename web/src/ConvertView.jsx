@@ -1,6 +1,7 @@
 import React from 'react';
 import { BaseComponent } from './utils/component.js';
 import { convertCode } from './utils/convert.js';
+import { scrollDelayed } from './utils/scroll.js';
 import { ConvertRouter } from './utils/urls.js';
 
 import './compiled/ConvertView.css';
@@ -36,7 +37,7 @@ class ConvertView extends BaseComponent {
     let lang_id = ConvertRouter.get(this.props.langs);
     if (lang_id) {
       this._changeLangId(lang_id);
-      window.setTimeout(() => this._scrollTo(), 200);
+      scrollDelayed('ConvertView');
     }
   }
 
@@ -73,29 +74,6 @@ class ConvertView extends BaseComponent {
     let new_code = converted_value.text;
 
     this.setState({ code: new_code, from_lang_id: new_lang.id });
-  }
-
-  _scrollTo() {
-    // HACK - make sure we can see ConvertView if we set it!
-    let elt = document.getElementsByClassName('ConvertView')[0];
-    if (elt) {
-      // get global offset
-      let top = 0;
-      let parent = elt;
-      do {
-        top += parent.offsetTop;
-        parent = parent.offsetParent;
-      } while (parent);
-
-      // get scrollbar location
-      let scroll_top = document.documentElement.scrollTop;
-
-      let window_height = window.innerHeight;
-
-      if (scroll_top < top - (window_height - 100)) {
-        window.scrollTo(0, top - 20);
-      }
-    }
   }
 
   // Render

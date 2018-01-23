@@ -1,17 +1,29 @@
 import React from 'react';
 import { BaseComponent } from './utils/component.js';
+import { scrollDelayed } from './utils/scroll.js';
 import { LangRouter, ConvertRouter } from './utils/urls.js';
 
 import './compiled/LangSelector.css';
 
 class LangSelector extends BaseComponent {
+  handleConvertClick(evt) {
+    // HACK - enforce scroll if hash doesn't change! ;P
+    if (window.location.hash === evt.target.getAttribute('href')) {
+      scrollDelayed('ConvertView');
+    }
+  }
+
   render() {
     let langs = this.props.langs;
     let convert_url = ConvertRouter.format(this.props.lang_id);
 
     return (
       <div className="LangSelector widget">
-        <a className="right" href={convert_url}>
+        <a
+          className="right"
+          href={convert_url}
+          onClick={this.handleConvertClick}
+        >
           Converter
         </a>
         <span className="label">Choose language/library:</span>
