@@ -32,7 +32,10 @@ class ReferenceView extends BaseComponent {
 
   handleHashChange(evt) {
     evt.preventDefault();
-    this.setState({ lang_id: this._getLangIdFromHash() });
+    let hash = this._getLangIdFromHash();
+    if (hash) {
+      this.setState({ lang_id: hash });
+    }
   }
 
   // Helpers

@@ -69,4 +69,22 @@
           text-decoration: line-through;
       }
   }
+
+  .anchor {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+
+    display: inline-block;
+    vertical-align: top;
+    margin: -2px 0 0 5px;
+    font-size: .8em;
+
+    @media (max-width: 630px) {
+      opacity: 1;
+    }
+  }
+
+  h2:hover .anchor {
+    opacity: 1;
+  }
 }
