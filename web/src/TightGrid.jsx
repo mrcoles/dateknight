@@ -92,8 +92,18 @@ class TightGrid extends BaseComponent {
       </button>
     );
 
+    let mobile_all_info_link = !has_info ? null : (
+      <button
+        className="mo-info-link link-colors"
+        onClick={e => this.toggleAllExpands(e, !all_expanded)}
+      >
+        {all_expanded ? 'hide info' : 'show info'}
+      </button>
+    );
+
     return (
       <div className="TightGrid">
+        {mobile_all_info_link}
         <table>
           <thead>
             <tr>

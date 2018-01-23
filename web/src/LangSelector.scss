@@ -1,6 +1,10 @@
 
 .LangSelector {
 
+    .right {
+        margin: 0 0 0 10px;
+    }
+
     .label {
         margin-right: 1.0rem;
     }
@@ -15,6 +19,13 @@
             padding-right: 0;
             border-right: 0;
             margin-right: 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .options {
+            display: block;
+            margin-top: 1em;
         }
     }
 }

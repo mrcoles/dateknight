@@ -18,17 +18,27 @@ body {
   color: #333;
 }
 
+$link-color: #0091EA;
+$link-color-hover: #00B0FF;
+$link-color-active: #000;
+
 a {
-    color: #0091EA;
+    color: $link-color;
     text-decoration: none;
 
     &:hover {
-        color: #00B0FF;
+        color: $link-color-hover;
     }
 
     &:active {
-        color: #000;
+        color: $link-color-active;
     }
+}
+
+.link-colors {
+    color: $link-color;
+    &:hover { color: $link-color-hover; }
+    &:active { color: $link-color-active; }
 }
 
 h1 {
@@ -86,6 +96,9 @@ h2 {
   vertical-align: middle;
   margin-left: 0.2em;
 }
+
+.right { float: right; }
+.left { float: left; }
 
 .text-center {
     text-align: center;

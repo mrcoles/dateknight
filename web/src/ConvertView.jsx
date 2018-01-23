@@ -165,13 +165,13 @@ class ConvertView extends BaseComponent {
     converted_values.forEach(({ lang, text, html }) =>
       elts.push(
         <label
-          className="result-label"
+          className="result-label mo-col13"
           key={lang.id + '-label'}
           onClick={e => this.handleSwap(e, lang.id)}
         >
           {lang.name}
         </label>,
-        <div className="result-text" key={lang.id + '-text'}>
+        <div className="result-text mo-col12" key={lang.id + '-text'}>
           <div
             className="lang-code-html inputlike"
             dangerouslySetInnerHTML={{ __html: html }}
@@ -194,7 +194,8 @@ class ConvertView extends BaseComponent {
           </a>
         </h2>
         <p className="widget">
-          Automatically convert a format from language to another.
+          Automatically convert a datetime format from language/library to
+          another.
         </p>
         <div className="items">{elts}</div>
       </div>

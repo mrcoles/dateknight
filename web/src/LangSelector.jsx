@@ -9,6 +9,9 @@ class LangSelector extends BaseComponent {
 
     return (
       <div className="LangSelector widget">
+        <a className="right" href="#convert">
+          Converter
+        </a>
         <span className="label">Choose language/library:</span>
         <span className="options">
           {langs.map(l => (

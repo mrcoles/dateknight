@@ -66,4 +66,21 @@
     .mono {
         font-family: Courier New, monospace;
     }
+
+    .mo-info-link {
+        display: none;
+
+        float: right;
+        margin: 0 0 1em 15px;
+    }
+
+    @media (max-width: 767px) {
+        .info-link {
+            display: none;
+        }
+
+        .mo-info-link {
+            display: block;
+        }
+    }
 }
