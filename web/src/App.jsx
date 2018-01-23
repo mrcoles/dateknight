@@ -1,5 +1,5 @@
 import React from 'react';
-import { BaseComponent } from './utils.js';
+import { BaseComponent } from './utils/component.js';
 
 import './compiled/App.css';
 import ForkMe from './ForkMe.jsx';

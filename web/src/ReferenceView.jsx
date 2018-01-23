@@ -1,5 +1,6 @@
 import React from 'react';
-import { BaseComponent, DEFAULT_LANG_ID } from './utils.js';
+import { BaseComponent } from './utils/component.js';
+import { LangRouter, getLangId } from './utils/urls.js';
 
 // import './ReferenceView.css';
 
@@ -11,8 +12,10 @@ class ReferenceView extends BaseComponent {
   constructor(props) {
     super(props);
 
+    let lang_id = getLangId(this.props.langs);
+
     this.state = {
-      lang_id: this._getLangIdFromHash()
+      lang_id: lang_id
     };
   }
 
@@ -32,16 +35,10 @@ class ReferenceView extends BaseComponent {
 
   handleHashChange(evt) {
     evt.preventDefault();
-    let hash = this._getLangIdFromHash();
-    if (hash) {
-      this.setState({ lang_id: hash });
+    let lang_id = LangRouter.get(this.props.langs);
+    if (lang_id) {
+      this.setState({ lang_id: lang_id });
     }
-  }
-
-  // Helpers
-  _getLangIdFromHash() {
-    let hash = window.location.hash.substring(1);
-    return this.props.langs.find(x => x.id === hash) ? hash : DEFAULT_LANG_ID;
   }
 
   // Render

@@ -1,5 +1,7 @@
 import React from 'react';
-import { BaseComponent, DEFAULT_LANG_ID, convertCode } from './utils.js';
+import { BaseComponent } from './utils/component.js';
+import { convertCode } from './utils/convert.js';
+import { ConvertRouter } from './utils/urls.js';
 
 import './compiled/ConvertView.css';
 import swap_svg from './svg/swap.svg';
@@ -31,7 +33,7 @@ class ConvertView extends BaseComponent {
   }
 
   _handleHashChange() {
-    let lang_id = this._getHash();
+    let lang_id = ConvertRouter.get(this.props.langs);
     if (lang_id) {
       this._changeLangId(lang_id);
       window.setTimeout(() => this._scrollTo(), 200);
@@ -45,12 +47,12 @@ class ConvertView extends BaseComponent {
 
   handleChangeSelect(evt) {
     let lang_id = evt.target.value;
-    this._setHash(lang_id);
+    ConvertRouter.go(lang_id);
   }
 
   handleSwap(evt, lang_id, code) {
     evt.preventDefault();
-    this._setHash(lang_id);
+    ConvertRouter.go(lang_id);
   }
 
   // Helpers
@@ -71,30 +73,6 @@ class ConvertView extends BaseComponent {
     let new_code = converted_value.text;
 
     this.setState({ code: new_code, from_lang_id: new_lang.id });
-  }
-
-  // URL hash is of form `#convert/${lang_id}`
-
-  _getHash() {
-    let hash = window.location.hash.substring(1);
-    let sp = hash.split('/');
-
-    if (sp.length <= 2 && sp[0] === 'convert') {
-      let lang_id =
-        sp[1] && this.props.langs.find(x => x.id === sp[1])
-          ? sp[1]
-          : DEFAULT_LANG_ID;
-
-      return lang_id;
-    }
-  }
-
-  _setHash(lang_id) {
-    window.location = this._asHash(lang_id);
-  }
-
-  _asHash(lang_id) {
-    return `#convert/${lang_id}`;
   }
 
   _scrollTo() {
@@ -178,7 +156,7 @@ class ConvertView extends BaseComponent {
           />
         </div>,
         <div className="result-swap" key={lang.id + '-swap'}>
-          <a href={this._asHash(lang.id)}>
+          <a href={ConvertRouter.format(lang.id)}>
             <img className="svg-icon svg-swap" src={swap_svg} alt="swap" />
           </a>
         </div>

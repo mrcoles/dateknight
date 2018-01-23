@@ -41,7 +41,7 @@
   }
 
   .base-code {
-    width: 25.0rem;
+    width: 40.0rem;
     max-width: 100%;
     box-sizing: border-box;
   }
@@ -110,7 +110,7 @@
     margin: -2px 0 0 5px;
     font-size: .8em;
 
-    @media (max-width: 630px) {
+    @media (max-width: 767px) {
       opacity: 1;
     }
   }

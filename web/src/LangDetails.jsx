@@ -1,5 +1,5 @@
 import React from 'react';
-import { BaseComponent } from './utils.js';
+import { BaseComponent } from './utils/component.js';
 
 import './compiled/LangDetails.css';
 import new_window_svg from './svg/new-window.svg';
