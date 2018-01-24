@@ -1,8 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const request = require('request');
+const request = require('cachedrequest');
 
-const cached_request = require('cached-request')(request);
 const pcheerio = require('pseudo-cheerio');
 
 const _dir = filepath => path.join(__dirname, filepath);
@@ -13,14 +12,12 @@ const CACHE_DIR = _pardir('./.cache/');
 const CRAWL_DIR = _pardir('./crawls/');
 const CONFIG_DIR = _pardir('./CRAWL.json');
 
-const CACHE_TTL = 1000 * 60 * 60 * 24 * 7; // 1 week
-cached_request.setCacheDirectory(CACHE_DIR);
-cached_request.setValue('ttl', CACHE_TTL);
+request.setCacheDirectory(CACHE_DIR);
 
 // ## Crawl sites
 //
 
-function crawl_sites() {
+function crawl_sites(ids) {
   if (!fs.existsSync(CRAWL_DIR)) {
     fs.mkdirSync(CRAWL_DIR);
   }
@@ -28,15 +25,19 @@ function crawl_sites() {
   let content = fs.readFileSync(CONFIG_DIR, 'utf8');
   let sites = JSON.parse(content);
 
+  if (ids) {
+    sites = sites.filter(s => ids.indexOf(s.id) > -1);
+  }
+
   (function loop() {
     let site = sites.shift();
 
     if (site) {
-      cached_request({ url: site.url }, (err, res) => {
+      request.cached(site.url, (err, res, body) => {
         if (err) {
           console.error(err);
         } else {
-          let content = res.body;
+          let content = body;
           let data = pcheerio.extract(content, site);
           console.log(
             `${site.id} -> ${data.length} result${data.length == 1 ? '' : 's'}`
@@ -57,6 +58,27 @@ function crawl_sites() {
 // ## Main
 //
 
+function main() {
+  const minimist = require('minimist');
+
+  let help = `
+    Usage
+      $ node crawl.js [<crawl_id> ...]
+
+    Options
+      --help, -h  show help info
+
+    Examples
+      $ node scripts/crawl.js momentjs django
+  `;
+
+  let args = minimist(process.argv.slice(2), {
+    alias: { h: 'help' }
+  });
+
+  crawl_sites(args._.length ? args._ : undefined);
+}
+
 if (require.main === module) {
-  crawl_sites();
+  main();
 }
