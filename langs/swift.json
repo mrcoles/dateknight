@@ -1,0 +1,213 @@
+{
+  "id": "swift",
+  "name": "Swift",
+  "docs": "http://nsdateformatter.com/",
+  "example": "",
+  "notes": "*   momentjs:Qo and swift:QQQQ aren't exactly the same...\n*   the source page uses zzzz twice\n*   notably missing fractional seconds",
+  "formats": [
+    {
+      "cat": "year",
+      "id": "Y",
+      "code": "y",
+      "example": "1 ... 2008",
+      "info": "Year, no padding"
+    },
+    {
+      "cat": "year",
+      "id": "swift:yyyy",
+      "code": "yyyy",
+      "example": "0001 ... 2008",
+      "info": "Year, minimum of four digits (padding with zeros if necessary)"
+    },
+    {
+      "cat": "year",
+      "id": "y",
+      "code": "yy",
+      "example": "08",
+      "info": "Year, two digits (padding with a zero if necessary)"
+    },
+    {
+      "cat": "quarter",
+      "id": "momentjs:Q",
+      "code": "Q",
+      "example": "4",
+      "info": "The quarter of the year. Use QQ if you want zero padding."
+    },
+    {
+      "cat": "quarter",
+      "id": "swift:QQQ",
+      "code": "QQQ",
+      "example": "Q4",
+      "info": "Quarter including \"Q\""
+    },
+    {
+      "cat": "quarter",
+      "id": "momentjs:Qo",
+      "code": "QQQQ",
+      "example": "4th quarter",
+      "info": "Quarter spelled out"
+    },
+    {
+      "cat": "month",
+      "id": "-m",
+      "code": "M",
+      "example": "1 ... 12",
+      "info": "The numeric month of the year.  A single M will use '1' for January."
+    },
+    {
+      "cat": "month",
+      "id": "m",
+      "code": "MM",
+      "example": "01 ... 12",
+      "info": "The numeric month of the year.  A double M will use '01' for January."
+    },
+    {
+      "cat": "month",
+      "id": "B",
+      "code": "MMMM",
+      "example": "December",
+      "info": "Full name of the month"
+    },
+    {
+      "cat": "month",
+      "id": "b",
+      "code": "MMM",
+      "example": "Dec",
+      "info": "The shorthand name of the month"
+    },
+    {
+      "cat": "month",
+      "id": "swift:MMMMM",
+      "code": "MMMMM",
+      "example": "D",
+      "info": "Narrow name of the month"
+    },
+    {
+      "cat": "day",
+      "id": "-d",
+      "code": "d",
+      "example": "1 ... 31",
+      "info": "The day of the month. A single d will use 1 for January 1st."
+    },
+    {
+      "cat": "day",
+      "id": "d",
+      "code": "dd",
+      "example": "01 ... 31",
+      "info": "The day of the month. A double d will use 01 for January 1st."
+    },
+    {
+      "cat": "ampm",
+      "id": "p",
+      "code": "a",
+      "example": "PM",
+      "info": "AM / PM for 12-hour time formats"
+    },
+    {
+      "cat": "hour",
+      "id": "-I",
+      "code": "h",
+      "example": "1 ... 12",
+      "info": "The 12-hour hour."
+    },
+    {
+      "cat": "hour",
+      "id": "I",
+      "code": "hh",
+      "example": "01 ... 12",
+      "info": "The 12-hour hour padding with a zero if there is only 1 digit"
+    },
+    {
+      "cat": "hour",
+      "id": "-H",
+      "code": "H",
+      "example": "0 1 ... 23",
+      "info": "The 24-hour hour."
+    },
+    {
+      "cat": "hour",
+      "id": "H",
+      "code": "HH",
+      "example": "00 01 ... 23",
+      "info": "The 24-hour hour padding with a zero if there is only 1 digit."
+    },
+    {
+      "cat": "minute",
+      "id": "-M",
+      "code": "m",
+      "example": "0 1 ... 59",
+      "info": "The minute, with no padding for zeroes."
+    },
+    {
+      "cat": "minute",
+      "id": "M",
+      "code": "mm",
+      "example": "00 01 ... 59",
+      "info": "The minute with zero padding."
+    },
+    {
+      "cat": "second",
+      "id": "-S",
+      "code": "s",
+      "example": "0 1 ... 59",
+      "info": "The seconds, with no padding for zeroes."
+    },
+    {
+      "cat": "second",
+      "id": "S",
+      "code": "ss",
+      "example": "00 01 ... 59",
+      "info": "The seconds with zero padding."
+    },
+    {
+      "cat": "timezone",
+      "id": "Z",
+      "code": "zzz",
+      "example": "CST",
+      "info": "The 3 letter name of the time zone.  Falls back to GMT-08:00 (hour offset) if the name is not known."
+    },
+    {
+      "cat": "timezone",
+      "id": "z",
+      "code": "Z",
+      "example": "-0600",
+      "info": "RFC 822 GMT format. Can also match a literal Z for Zulu (UTC) time."
+    },
+    {
+      "cat": "timezone",
+      "id": "momentjs:Z",
+      "code": "ZZZZZ",
+      "example": "-06:00",
+      "info": "ISO 8601 time zone format"
+    },
+    {
+      "cat": "dayofweek",
+      "id": "swift:F",
+      "code": "F",
+      "example": "3rd Tuesday in December",
+      "info": "The day of week in the month"
+    },
+    {
+      "cat": "dayofweek",
+      "id": "a",
+      "code": "E",
+      "example": "Tues",
+      "info": "The day of week in the month"
+    },
+    {
+      "cat": "dayofweek",
+      "id": "A",
+      "code": "EEEE",
+      "example": "Tuesday",
+      "info": "The full name of the day"
+    },
+    {
+      "cat": "dayofweek",
+      "id": "swift:EEEEE",
+      "code": "EEEEE",
+      "example": "T",
+      "info": "The narrow day of week"
+    }
+  ],
+  "ignore_missing": ["zzzz"]
+}

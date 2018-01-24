@@ -30,5 +30,17 @@
       "example": "td:eq(2)",
       "info": "td:eq(1)"
     }
+  },
+  {
+    "id": "swift",
+    "url": "http://nsdateformatter.com",
+    "rows": "section.info .reference tr",
+    "fields": {
+      "cat": ":prevAll(.separator):first td:eq(0)",
+      "code": "td:eq(0)",
+      "example": "td:eq(1)",
+      "info": "td:eq(2)"
+    },
+    "skip_if_blank": ["example"]
   }
 ]

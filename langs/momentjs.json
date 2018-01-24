@@ -24,6 +24,18 @@
       "example": "70 71 ... 29 30"
     },
     {
+      "cat": "quarter",
+      "id": "momentjs:Q",
+      "code": "Q",
+      "example": "1 2 3 4"
+    },
+    {
+      "cat": "quarter",
+      "id": "momentjs:Qo",
+      "code": "Qo",
+      "example": "1st 2nd 3rd 4th"
+    },
+    {
       "cat": "month",
       "id": "-m",
       "code": "M",
@@ -52,18 +64,6 @@
       "id": "b",
       "code": "MMM",
       "example": "Jan Feb ... Nov Dec"
-    },
-    {
-      "cat": "quarter",
-      "id": "momentjs:Q",
-      "code": "Q",
-      "example": "1 2 3 4"
-    },
-    {
-      "cat": "quarter",
-      "id": "momentjs:Qo",
-      "code": "Qo",
-      "example": "1st 2nd 3rd 4th"
     },
     {
       "cat": "day",

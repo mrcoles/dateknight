@@ -1,0 +1,188 @@
+[
+  {
+    "cat": "Year",
+    "code": "y",
+    "example": "2008",
+    "info": "Year, no padding"
+  },
+  {
+    "cat": "Year",
+    "code": "yy",
+    "example": "08",
+    "info": "Year, two digits (padding with a zero if necessary)"
+  },
+  {
+    "cat": "Year",
+    "code": "yyyy",
+    "example": "2008",
+    "info": "Year, minimum of four digits (padding with zeros if necessary)"
+  },
+  {
+    "cat": "Quarter",
+    "code": "Q",
+    "example": "4",
+    "info": "The quarter of the year. Use QQ if you want zero padding."
+  },
+  {
+    "cat": "Quarter",
+    "code": "QQQ",
+    "example": "Q4",
+    "info": "Quarter including \"Q\""
+  },
+  {
+    "cat": "Quarter",
+    "code": "QQQQ",
+    "example": "4th quarter",
+    "info": "Quarter spelled out"
+  },
+  {
+    "cat": "Month",
+    "code": "M",
+    "example": "12",
+    "info": "The numeric month of the year.  A single M will use '1' for January."
+  },
+  {
+    "cat": "Month",
+    "code": "MM",
+    "example": "12",
+    "info": "The numeric month of the year.  A double M will use '01' for January."
+  },
+  {
+    "cat": "Month",
+    "code": "MMM",
+    "example": "Dec",
+    "info": "The shorthand name of the month"
+  },
+  {
+    "cat": "Month",
+    "code": "MMMM",
+    "example": "December",
+    "info": "Full name of the month"
+  },
+  {
+    "cat": "Month",
+    "code": "MMMMM",
+    "example": "D",
+    "info": "Narrow name of the month"
+  },
+  {
+    "cat": "Day",
+    "code": "d",
+    "example": "14",
+    "info": "The day of the month. A single d will use 1 for January 1st."
+  },
+  {
+    "cat": "Day",
+    "code": "dd",
+    "example": "14",
+    "info": "The day of the month. A double d will use 01 for January 1st."
+  },
+  {
+    "cat": "Day",
+    "code": "F",
+    "example": "3rd Tuesday in December",
+    "info": "The day of week in the month"
+  },
+  {
+    "cat": "Day",
+    "code": "E",
+    "example": "Tues",
+    "info": "The day of week in the month"
+  },
+  {
+    "cat": "Day",
+    "code": "EEEE",
+    "example": "Tuesday",
+    "info": "The full name of the day"
+  },
+  {
+    "cat": "Day",
+    "code": "EEEEE",
+    "example": "T",
+    "info": "The narrow day of week"
+  },
+  {
+    "cat": "Hour",
+    "code": "h",
+    "example": "4",
+    "info": "The 12-hour hour."
+  },
+  {
+    "cat": "Hour",
+    "code": "hh",
+    "example": "04",
+    "info": "The 12-hour hour padding with a zero if there is only 1 digit"
+  },
+  {
+    "cat": "Hour",
+    "code": "H",
+    "example": "16",
+    "info": "The 24-hour hour."
+  },
+  {
+    "cat": "Hour",
+    "code": "HH",
+    "example": "16",
+    "info": "The 24-hour hour padding with a zero if there is only 1 digit."
+  },
+  {
+    "cat": "Hour",
+    "code": "a",
+    "example": "PM",
+    "info": "AM / PM for 12-hour time formats"
+  },
+  {
+    "cat": "Minute",
+    "code": "m",
+    "example": "35",
+    "info": "The minute, with no padding for zeroes."
+  },
+  {
+    "cat": "Minute",
+    "code": "mm",
+    "example": "35",
+    "info": "The minute with zero padding."
+  },
+  {
+    "cat": "Second",
+    "code": "s",
+    "example": "8",
+    "info": "The seconds, with no padding for zeroes."
+  },
+  {
+    "cat": "Second",
+    "code": "ss",
+    "example": "08",
+    "info": "The seconds with zero padding."
+  },
+  {
+    "cat": "Time Zone",
+    "code": "zzz",
+    "example": "CST",
+    "info": "The 3 letter name of the time zone.  Falls back to GMT-08:00 (hour offset) if the name is not known."
+  },
+  {
+    "cat": "Time Zone",
+    "code": "zzzz",
+    "example": "Central Standard Time",
+    "info": "The expanded time zone name, falls back to GMT-08:00 (hour offset) if name is not known."
+  },
+  {
+    "cat": "Time Zone",
+    "code": "zzzz",
+    "example": "CST-06:00",
+    "info": "Time zone with abbreviation and offset"
+  },
+  {
+    "cat": "Time Zone",
+    "code": "Z",
+    "example": "-0600",
+    "info": "RFC 822 GMT format. Can also match a literal Z for Zulu (UTC) time."
+  },
+  {
+    "cat": "Time Zone",
+    "code": "ZZZZZ",
+    "example": "-06:00",
+    "info": "ISO 8601 time zone format"
+  }
+]
