@@ -1,6 +1,6 @@
 {
   "id": "go",
-  "name": "Go Lang",
+  "name": "Go",
   "docs": "https://golang.org/pkg/time/#Time.Format",
   "example": "\/\/ The layout string used by the Parse function and Format method\n\/\/ shows by example how the reference time should be represented.\n\/\/ We stress that one must show how the reference time is formatted,\n\/\/ not a time of the user's choosing. Thus each layout string is a\n\/\/ representation of the time stamp,\n\/\/     Jan 2 15:04:05 2006 MST\n\/\/ An easy way to remember this value is that it holds, when presented\n\/\/ in this order, the values (lined up with the elements above):\n\/\/     1 2  3  4  5    6  -7\n\nimport (\n    \"fmt\"\n    \"time\"\n)\n\nfunc main() {\n    t, err := time.Parse(time.UnixDate, \"Sat Mar  7 11:06:39 PST 2015\")\n    if err != nil { panic(err) }\n    fmt.Println(t.Format(\"Mon Jan 2 15:04:05 MST 2006\"))\n}",
   "notes": "",
