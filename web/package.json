@@ -5,6 +5,7 @@
   "homepage": "https://mrcoles.com/dateknight",
   "dependencies": {
     "escape-html": "^1.0.3",
+    "moment": "^2.20.1",
     "node-sass": "4.7.2",
     "npm-run-all": "^4.1.2",
     "react": "^16.1.0",

@@ -132,8 +132,7 @@ class AutoCompleter extends BaseComponent {
     let value = this.props.value;
     let start = match.start;
     let end = match.end;
-    let new_value =
-      value.substring(0, start) + match.row.code + value.substring(end);
+    let new_value = value.substring(0, start) + match.row.code + value.substring(end);
     this.props.onUpdateValue(new_value);
     this.setState(this._emptyState());
     return true;
@@ -183,8 +182,7 @@ class AutoCompleter extends BaseComponent {
           let scroll_top = elts.scrollTop;
           let top = elt.offsetTop;
           let height = elt.offsetHeight;
-          let contained_in =
-            top >= scroll_top && top + height <= scroll_top + par_height;
+          let contained_in = top >= scroll_top && top + height <= scroll_top + par_height;
           if (!contained_in) {
             elts.scrollTo(0, top - 10);
           }
@@ -203,6 +201,7 @@ class AutoCompleter extends BaseComponent {
     if (matches.length) {
       let matches_rows = matches.map((m, i) => {
         let dl_content = [];
+
         fieldnames.forEach(f => {
           if ((m.row[f] || '').trim()) {
             // HACK - override for 'example' to not repeat when it's same as code (i.e., Go)

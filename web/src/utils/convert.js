@@ -2,14 +2,21 @@ import * as escapeHtml from 'escape-html';
 
 export function convertCode(code, from_lang, to_langs) {
   let formats = _extractFormats(from_lang);
+  let matches = _findMatches(code, formats);
+  let parsed_code = _parseMatches(code, matches);
 
-  return to_langs.map(to_lang => {
-    let matches = _findMatches(code, formats);
-    let parsed_code = _parseMatches(code, matches);
+  // HACK - make an array that is understood by FormatSamples
+  let global_array = parsed_code.map(
+    p => (p.format_id ? `$${p.format_id}` : `${p.value.startsWith('$') ? ' ' : ''}${p.value}`)
+  );
+
+  let converted_values = to_langs.map(to_lang => {
     let { text, html } = _convertMatch(parsed_code, to_lang);
 
-    return { lang: to_lang, text, html };
+    return { lang: to_lang, text, html, global_array };
   });
+
+  return { converted_values, global_array };
 }
 
 function _extractFormats(lang) {
@@ -28,8 +35,7 @@ function _findMatches(code, formats) {
 
   let code_i = 0;
 
-  const _findMatch = fmt =>
-    code.substring(code_i, code_i + fmt.code.length) === fmt.code;
+  const _findMatch = fmt => code.substring(code_i, code_i + fmt.code.length) === fmt.code;
 
   while (code_i < code.length) {
     let m = formats.find(_findMatch);
@@ -60,10 +66,15 @@ function _parseMatches(code, matches) {
   // -   value - string - the slice of code from start to end
   // -   format_id - string (optional) - only returned if a match is
   //                 found, this will be a global formatting id
+  //
+  // NOTE: this mutates matches (adds `null` to the end!)
+  //
   let result = [];
 
   let start = 0;
 
+  // HACK - to allow loop to check back on final step
+  // this is pretty gross and mutates matches
   matches.push(null);
 
   matches.forEach(m => {
@@ -104,9 +115,7 @@ function _convertMatch(parsed_code, to_lang) {
 
       if (to_match) {
         text += to_match.code;
-        html += `<strong class="lang-code">${escapeHtml(
-          to_match.code
-        )}</strong>`;
+        html += `<strong class="lang-code">${escapeHtml(to_match.code)}</strong>`;
       } else {
         text += '<NO_EQUIV(' + m.value + ')>';
         html += `<em class="lang-unknown" title="no equivalent code found">${escapeHtml(

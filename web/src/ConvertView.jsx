@@ -80,7 +80,7 @@ class ConvertView extends BaseComponent {
     let cur_lang = this._getLang(this.state.from_lang_id);
     let new_lang = this._getLang(new_lang_id);
 
-    let converted_value = convertCode(cur_code, cur_lang, [new_lang])[0];
+    let converted_value = convertCode(cur_code, cur_lang, [new_lang]).converted_values[0];
     let new_code = converted_value.text;
 
     this.setState({ code: new_code, from_lang_id: new_lang.id });
@@ -93,7 +93,7 @@ class ConvertView extends BaseComponent {
 
     let from_lang = this._getLang(this.state.from_lang_id);
     let to_langs = this._getOtherLangs(this.state.from_lang_id);
-    let converted_values = convertCode(code, from_lang, to_langs);
+    let { converted_values, global_array } = convertCode(code, from_lang, to_langs);
 
     let anchor_link = `#convert/${from_lang.id}`;
 
@@ -163,7 +163,12 @@ class ConvertView extends BaseComponent {
         </p>
         <div className="items">{elts}</div>
 
-        <FormatSamples lang={from_lang} onSelectSample={this.handleSelectSample} />
+        <FormatSamples
+          lang={from_lang}
+          moment_lang={this.props.langs.find(x => x.id === 'momentjs')}
+          global_array={global_array}
+          onSelectSample={this.handleSelectSample}
+        />
       </div>
     );
   }
