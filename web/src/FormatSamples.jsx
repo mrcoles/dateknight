@@ -73,10 +73,10 @@ class FormatSamples extends BaseComponent {
       <div className="FormatSamples widget widget2x">
         <br />
         <br />
-        <h2>Examples</h2>
+        <h2>{lang.name} Examples</h2>
         <p>
-          Tap a sample below to populate the converter. Example values are calculated via MomentJS
-          with the current time.
+          The current date and time is formatted for the following examples below. Tap on one to
+          populate the converter.
         </p>
         <table className="widget">
           <tbody>
@@ -86,12 +86,16 @@ class FormatSamples extends BaseComponent {
                 onClick={e => this.handleTrClick(e, sample)}
                 key={`${sample.code}-${sample.is_current ? '-cur' : ''}`}
               >
+                <td className="code">{sample.code}</td>
                 <td>{sample.example}</td>
-                <td>{sample.code}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        <p className="disclaimer">
+          *The codes are converted into MomentJs to render the live examples. Any unique codes that
+          do not map to Moment are displayed with an unrendered message.
+        </p>
       </div>
     );
   }
@@ -118,7 +122,8 @@ const applyLang = (lang, moment_lang, extra_samples) => {
     return acc.concat(
       samples.map(sample => {
         let code = codeForLang(sample.global, id_to_fmt);
-        let moment_code = m_id_to_fmt === null ? code : codeForLang(sample.global, m_id_to_fmt);
+        let moment_code =
+          m_id_to_fmt === null ? code : codeForLang(sample.global, m_id_to_fmt, id_to_fmt);
         return {
           code: code,
           example: now.format(moment_code),
@@ -130,14 +135,22 @@ const applyLang = (lang, moment_lang, extra_samples) => {
   }, []);
 };
 
-const codeForLang = (global_code, id_to_fmt) =>
-  global_code
-    .map(
-      x =>
-        x.startsWith('$')
-          ? id_to_fmt[x.substring(1)].code || `<ErrorNotFound(${x.substring(1)})>`
-          : x
-    )
+const codeForLang = (global_code, id_to_fmt, ref_id_to_fmt) => {
+  ref_id_to_fmt = ref_id_to_fmt || id_to_fmt;
+
+  return global_code
+    .map(x => {
+      if (x.startsWith('$')) {
+        let fmt = id_to_fmt[x.substring(1)];
+        if (fmt) {
+          return fmt.code;
+        }
+        let ref_fmt = ref_id_to_fmt[x.substring(1)];
+        return `[<unrendered(${ref_fmt ? ref_fmt.code : x.substring(1)})>]`;
+      }
+      return x;
+    })
     .join('');
+};
 
 export default FormatSamples;

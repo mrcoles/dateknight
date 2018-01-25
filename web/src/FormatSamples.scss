@@ -25,4 +25,27 @@
     .current {
         font-style: italic;
     }
+
+    .code {
+        position: relative;
+
+        &:after {
+            content: "→";
+            position: absolute;
+            top: 50%;
+            right: 0;
+            height: 10px;
+            line-height: 10px;
+            font-size: 10px;
+            margin-top: -5px;
+            color: #999;
+        }
+    }
+
+    .disclaimer {
+        color: #999;
+        font-size: .8em;
+        margin-top: 4.0rem;
+        font-style: italic;
+    }
 }
