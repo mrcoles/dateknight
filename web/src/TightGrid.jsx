@@ -45,6 +45,14 @@ class TightGrid extends BaseComponent {
         cat = last_cat = fmt.cat;
       }
 
+      // HACK - for wrap fractionalseconds with &#8203;
+      let cat_elt;
+      if (cat === 'fractionalsecond') {
+        cat_elt = <span>fractional&#8203;second</span>;
+      } else {
+        cat_elt = <span>{cat}</span>;
+      }
+
       if (fmt.info && !has_info) {
         has_info = true;
       }
@@ -72,7 +80,7 @@ class TightGrid extends BaseComponent {
 
       return (
         <tr className="row" key={_getKey(fmt)}>
-          <td className="item item-cat">{cat}</td>
+          <td className="item item-cat">{cat_elt}</td>
           <td className="item item-code">{fmt.code}</td>
           <td className="item item-example">
             {info_link}

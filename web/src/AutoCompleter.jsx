@@ -42,7 +42,7 @@ class AutoCompleter extends BaseComponent {
     console.log(`[KEYUP?] ${evt}`); //REM
     let keys = this._getKeys(evt);
 
-    if (keys.esc) {
+    if (keys.esc || (keys.enter && this.state.active_pos === -1)) {
       console.log(`  ESCAPE`); //REM
       this.setState(this._emptyState());
       return;

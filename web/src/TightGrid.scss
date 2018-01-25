@@ -29,6 +29,7 @@
     .item-cat {
         text-align: right;
         font-weight: bold;
+        word-break: break-word;
     }
 
     .item-example,
@@ -38,6 +39,7 @@
 
     .item-example {
         max-width: 250px;
+        word-break: break-word;
     }
 
     .info-link {
@@ -50,6 +52,13 @@
         border: 0;
         background: transparent;
         cursor: pointer;
+
+        height: 2.2rem;
+        line-height: 2.2rem;
+        text-transform: none;
+        font-weight: normal;
+        padding: 0;
+        letter-spacing: 0;
     }
 
     tr:hover .info-link {
@@ -72,6 +81,12 @@
 
         float: right;
         margin: 0 0 1em 15px;
+
+        text-transform: none;
+        font-weight: normal;
+        padding: 0;
+        letter-spacing: 0;
+        border: 0;
     }
 
     @media (max-width: 767px) {
