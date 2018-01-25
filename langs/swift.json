@@ -7,14 +7,14 @@
   "formats": [
     {
       "cat": "year",
-      "id": "Y",
+      "id": "swift:y",
       "code": "y",
       "example": "1 ... 2008",
       "info": "Year, no padding"
     },
     {
       "cat": "year",
-      "id": "swift:yyyy",
+      "id": "Y",
       "code": "yyyy",
       "example": "0001 ... 2008",
       "info": "Year, minimum of four digits (padding with zeros if necessary)"
