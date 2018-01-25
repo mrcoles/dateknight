@@ -39,17 +39,14 @@ class AutoCompleter extends BaseComponent {
   }
 
   handleInputKeyUp(evt) {
-    console.log(`[KEYUP?] ${evt}`); //REM
     let keys = this._getKeys(evt);
 
     if (keys.esc || (keys.enter && this.state.active_pos === -1)) {
-      console.log(`  ESCAPE`); //REM
       this.setState(this._emptyState());
       return;
     }
 
     let { subtext, start, end } = this._getCurrentText(evt.target, ' ,|/\\_:');
-    console.log(`   ${subtext} - ${start} - ${end}`); //REM
 
     let matches = this._findMatches(
       subtext,
@@ -61,8 +58,6 @@ class AutoCompleter extends BaseComponent {
 
     let old_pos = this.state.active_pos;
     let new_pos = constrain(old_pos + keys.dir, -1, matches.length - 1);
-
-    console.log(`  NUM MATCHES? ${matches.length} text: ${subtext}`); //REM
 
     this.setState({ matches, ac_text: subtext, active_pos: new_pos });
 
@@ -110,9 +105,14 @@ class AutoCompleter extends BaseComponent {
     let matches = rows.map(row => {
       let score = fieldnames.reduce((acc, fieldname, i) => {
         let field = row[fieldname] || '';
-        if (field.indexOf(text) > -1) {
+        let lower_field = field.toLowerCase();
+        if (field === text) {
+          acc += 100;
+        } else if (lower_field === lower_text) {
+          acc += 50;
+        } else if (field.indexOf(text) > -1) {
           acc += 10;
-        } else if (field.toLowerCase().indexOf(lower_text) > -1) {
+        } else if (lower_field.indexOf(lower_text) > -1) {
           acc += 1;
         }
         return acc;
@@ -139,8 +139,6 @@ class AutoCompleter extends BaseComponent {
   }
 
   _getCurrentText(input, dividers) {
-    console.log(`   input ${input}`); //REM
-    window._input = input; //REM
     dividers = dividers || '';
     let text = input.value;
     let start = input.selectionStart || 0;
