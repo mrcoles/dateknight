@@ -137,7 +137,7 @@ class ConvertView extends BaseComponent {
         </label>,
         <div className="result-text mo-col12" key={lang.id + '-text'}>
           <div
-            className="lang-code-html inputlike"
+            className="lang-code-html inputlike multiline force-select"
             dangerouslySetInnerHTML={{ __html: html }}
           />
         </div>,

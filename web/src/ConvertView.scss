@@ -4,6 +4,13 @@
 
   min-height: 65vh;
 
+  .force-select {
+      -webkit-user-select: all; // Chrome 49+
+         -moz-user-select: all; // Firefox 43+
+          -ms-user-select: all; // No support yet
+              user-select: all; // Likely future
+  }
+
   .items {
       display: grid;
       grid-template-columns: 0fr  1fr 0fr;
@@ -68,10 +75,15 @@
       font-family: monaco, courier, monospace;
       letter-spacing: 0.07em;
 
-      line-height: $input-height - 4;
+      line-height: $input-height - 8;
       height: $input-height;
-      padding: 1px 13px;
+      padding: 3px 13px;
       font-size: 16px;
+
+      &.multiline {
+          min-height: $input-height;
+          height: auto;
+      }
   }
 
   .convert-form .inputlike {
