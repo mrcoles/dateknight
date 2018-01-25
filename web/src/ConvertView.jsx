@@ -7,7 +7,6 @@ import AutoCompleter from './AutoCompleter.jsx';
 import FormatSamples from './FormatSamples.jsx';
 
 import './compiled/ConvertView.css';
-import swap_svg from './svg/swap.svg';
 
 class ConvertView extends BaseComponent {
   constructor(props) {
@@ -104,7 +103,7 @@ class ConvertView extends BaseComponent {
 
     // header form
     elts.push(
-      <div className="convert-label mo-col13" key={'convert-label'}>
+      <div className="convert-label mo-col02" key={'convert-label'}>
         <select name="from_lang_id" value={from_lang.id} onChange={this.handleChangeSelect}>
           {langs.map(lang => (
             <option key={lang.id} value={lang.id}>
@@ -113,7 +112,7 @@ class ConvertView extends BaseComponent {
           ))}
         </select>
       </div>,
-      <div className="convert-form col23 mo-col13" key={'convert-form'}>
+      <div className="convert-form mo-col02" key={'convert-form'}>
         <AutoCompleter
           className="base-code"
           value={code}
@@ -136,16 +135,11 @@ class ConvertView extends BaseComponent {
         >
           {lang.name}
         </label>,
-        <div className="result-text mo-col12" key={lang.id + '-text'}>
+        <div className="result-text" key={lang.id + '-text'}>
           <div
             className="lang-code-html inputlike multiline force-select"
             dangerouslySetInnerHTML={{ __html: html }}
           />
-        </div>,
-        <div className="result-swap" key={lang.id + '-swap'}>
-          <a href={ConvertRouter.format(lang.id)}>
-            <img className="svg-icon svg-swap" src={swap_svg} alt="swap" />
-          </a>
         </div>
       )
     );

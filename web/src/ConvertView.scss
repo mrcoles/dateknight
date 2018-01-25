@@ -13,24 +13,14 @@
 
   .items {
       display: grid;
-      grid-template-columns: 0fr  1fr 0fr;
+      grid-template-columns: 0fr 1fr;
       grid-gap: 1.0rem 1.0rem;
       margin-top: 1.0rem;
   }
 
-  .col13 {
-      grid-column: 1 / 4;
-  }
-  .col23 {
-      grid-column: 2 / 4;
-  }
-
   @media (max-width: 767px) {
-    .mo-col12 {
+    .mo-col02 {
       grid-column: 1 / 3;
-    }
-    .mo-col13 {
-      grid-column: 1 / 4;
     }
 
     .result-label {
@@ -39,6 +29,10 @@
 
     .convert-label select {
         width: 100%;
+    }
+
+    .convert-form {
+        margin-bottom: 2.0rem;
     }
   }
 
@@ -49,11 +43,11 @@
 
   .result-label {
     cursor: pointer;
+    white-space: nowrap;
   }
 
   .result-label,
-  .convert-label,
-  .result-swap {
+  .convert-label {
     line-height: $input-height;
   }
 
