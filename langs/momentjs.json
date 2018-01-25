@@ -224,7 +224,7 @@
     },
     {
       "cat": "weekofyear",
-      "id": "W",
+      "id": "momentjs:W",
       "code": "W",
       "example": "(ISO) 1 2 ... 52 53"
     },
