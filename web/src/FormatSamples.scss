@@ -1,0 +1,24 @@
+
+.FormatSamples {
+
+    table {
+        width: 100%;
+        line-height: 2.2rem;
+        margin: 0 -1.0rem;
+    }
+
+    tr {
+        border-bottom: 1px solid #dedede;
+        cursor: pointer;
+        padding: 0;
+
+        &:hover {
+            background: #ffd;
+        }
+    }
+
+    th, td {
+        padding: 1.0rem 1.0rem;
+        vertical-align: top;
+    }
+}

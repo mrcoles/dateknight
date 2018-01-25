@@ -17,6 +17,11 @@ body {
   color: $font-color;
 }
 
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 $link-color: #0091EA;
 $link-color-hover: #00B0FF;
 $link-color-active: #000;

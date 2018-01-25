@@ -4,6 +4,7 @@ import { convertCode } from './utils/convert.js';
 import { scrollDelayed } from './utils/scroll.js';
 import { ConvertRouter } from './utils/urls.js';
 import AutoCompleter from './AutoCompleter.jsx';
+import FormatSamples from './FormatSamples.jsx';
 
 import './compiled/ConvertView.css';
 import swap_svg from './svg/swap.svg';
@@ -61,6 +62,10 @@ class ConvertView extends BaseComponent {
     ConvertRouter.go(lang_id);
   }
 
+  handleSelectSample(sample) {
+    this.setState({ code: sample.code });
+  }
+
   // Helpers
   _getLang(lang_id) {
     return this.props.langs.find(l => l.id === lang_id);
@@ -100,11 +105,7 @@ class ConvertView extends BaseComponent {
     // header form
     elts.push(
       <div className="convert-label mo-col13" key={'convert-label'}>
-        <select
-          name="from_lang_id"
-          value={from_lang.id}
-          onChange={this.handleChangeSelect}
-        >
+        <select name="from_lang_id" value={from_lang.id} onChange={this.handleChangeSelect}>
           {langs.map(lang => (
             <option key={lang.id} value={lang.id}>
               {lang.name}
@@ -152,16 +153,17 @@ class ConvertView extends BaseComponent {
     return (
       <div className="ConvertView widget widget2x">
         <h2>
-          Convert
+          DateTime Converter
           <a className="anchor" href={anchor_link}>
             ¶
           </a>
         </h2>
         <p className="widget">
-          Automatically convert a datetime format from language/library to
-          another.
+          Automatically convert a datetime format from language/library to another.
         </p>
         <div className="items">{elts}</div>
+
+        <FormatSamples lang={from_lang} onSelectSample={this.handleSelectSample} />
       </div>
     );
   }
