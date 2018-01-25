@@ -2,8 +2,6 @@ import React from 'react';
 import { BaseComponent } from './utils/component.js';
 import { LangRouter, getLangId } from './utils/urls.js';
 
-// import './ReferenceView.css';
-
 import LangSelector from './LangSelector.jsx';
 import LangDetails from './LangDetails.jsx';
 import TightGrid from './TightGrid.jsx';
@@ -25,7 +23,7 @@ class ReferenceView extends BaseComponent {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('handleHashChange', this.handleHashChange);
+    window.removeEventListener('hashchange', this.handleHashChange);
   }
 
   // Handlers

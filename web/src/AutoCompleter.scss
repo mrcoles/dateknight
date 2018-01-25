@@ -1,0 +1,54 @@
+
+
+.AutoCompleter {
+    position: relative;
+
+    .matches {
+        position: absolute;
+        width: 100%;
+        box-sizing: border-box;
+        background: #fff;
+        border: 1px solid #ddd;
+        max-height: 70vh;
+        overflow-y: scroll;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .15);
+    }
+
+    .row {
+        padding: 0.5rem 1.0rem;
+        margin: 0;
+        border-bottom: 1px solid #ddd;
+
+        display: grid;
+        grid-template-columns: 0fr 1fr;
+        grid-gap: 0 1.0rem;
+
+        &:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        &.active {
+            background: #ffd;
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        dd,
+        dt {
+            padding: 0;
+            margin: 0;
+        }
+
+        dt {
+            // text-align: right;
+            // font-weight: bold;
+            color: #999;
+        }
+    }
+
+    span {
+        display: block;
+    }
+}

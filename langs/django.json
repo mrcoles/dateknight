@@ -55,8 +55,8 @@
       "info": "Month, textual, 3 letters, lowercase."
     },
     {
-      "cat": "",
-      "id": "",
+      "cat": "month",
+      "id": "django:N",
       "code": "N",
       "example": "'Jan.', 'Feb.', 'March', 'May'",
       "info": "Month abbreviation in Associated Press\nstyle. Proprietary extension."
@@ -265,8 +265,8 @@
       "info": "Daylight Savings Time, whether it’s\nin effect or not."
     },
     {
-      "cat": "",
-      "id": "",
+      "cat": "misc",
+      "id": "django:L",
       "code": "L",
       "example": "True or False",
       "info": "Boolean for whether it’s a leap year."

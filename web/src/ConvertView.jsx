@@ -3,6 +3,7 @@ import { BaseComponent } from './utils/component.js';
 import { convertCode } from './utils/convert.js';
 import { scrollDelayed } from './utils/scroll.js';
 import { ConvertRouter } from './utils/urls.js';
+import AutoCompleter from './AutoCompleter.jsx';
 
 import './compiled/ConvertView.css';
 import swap_svg from './svg/swap.svg';
@@ -24,7 +25,7 @@ class ConvertView extends BaseComponent {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('handleHashChange', this.handleHashChange);
+    window.removeEventListener('hashchange', this.handleHashChange);
   }
 
   // Handlers
@@ -44,6 +45,10 @@ class ConvertView extends BaseComponent {
   handleChangeCode(evt) {
     let code = evt.target.value;
     this.setState({ code: code });
+  }
+
+  handleUpdateCode(new_code) {
+    this.setState({ code: new_code });
   }
 
   handleChangeSelect(evt) {
@@ -87,11 +92,14 @@ class ConvertView extends BaseComponent {
 
     let anchor_link = `#convert/${from_lang.id}`;
 
+    let ac_rows = from_lang.formats;
+    let ac_fieldnames = ['cat', 'code', 'example', 'info'];
+
     let elts = [];
 
     // header form
     elts.push(
-      <div className="convert-label" key={'convert-label'}>
+      <div className="convert-label mo-col13" key={'convert-label'}>
         <select
           name="from_lang_id"
           value={from_lang.id}
@@ -104,15 +112,15 @@ class ConvertView extends BaseComponent {
           ))}
         </select>
       </div>,
-      <div className="convert-form col23" key={'convert-form'}>
-        <input
-          className="base-code inputlike"
-          type="text"
-          name="code"
+      <div className="convert-form col23 mo-col13" key={'convert-form'}>
+        <AutoCompleter
+          className="base-code"
           value={code}
+          ac_rows={ac_rows}
+          ac_fieldnames={ac_fieldnames}
           onChange={this.handleChangeCode}
-        />{' '}
-        <label>into…</label>{' '}
+          onUpdateValue={this.handleUpdateCode}
+        />
       </div>
     );
 
