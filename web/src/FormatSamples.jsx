@@ -108,24 +108,24 @@ const applyLang = (lang, moment_lang, extra_samples) => {
   let id_to_fmt = {};
   lang.formats.forEach(fmt => (id_to_fmt[fmt.id] = fmt));
 
-  let m_id_to_fmt = null;
+  let m_id_to_fmt = id_to_fmt;
   if (lang.id !== moment_lang.id) {
     m_id_to_fmt = {};
     moment_lang.formats.forEach(fmt => (m_id_to_fmt[fmt.id] = fmt));
   }
 
   let now = moment();
+  const formatfn = token => now.format(token);
 
   // this reduce essentially performs a flatmap
   return [extra_samples, SAMPLES].reduce((acc, samples, i) => {
     return acc.concat(
       samples.map(sample => {
         let code = codeForLang(sample.global, id_to_fmt);
-        let moment_code =
-          m_id_to_fmt === null ? code : codeForLang(sample.global, m_id_to_fmt, id_to_fmt);
+        let moment_text = codeForLang(sample.global, m_id_to_fmt, id_to_fmt, formatfn);
         return {
           code: code,
-          example: now.format(moment_code),
+          example: moment_text,
           hardcoded: sample.example,
           is_current: i === 0
         };
@@ -134,7 +134,7 @@ const applyLang = (lang, moment_lang, extra_samples) => {
   }, []);
 };
 
-const codeForLang = (global_code, id_to_fmt, ref_id_to_fmt) => {
+const codeForLang = (global_code, id_to_fmt, ref_id_to_fmt, formatfn) => {
   ref_id_to_fmt = ref_id_to_fmt || id_to_fmt;
 
   return global_code
@@ -142,10 +142,10 @@ const codeForLang = (global_code, id_to_fmt, ref_id_to_fmt) => {
       if (x.startsWith('$')) {
         let fmt = id_to_fmt[x.substring(1)];
         if (fmt && !fmt.unrenderable) {
-          return fmt.code;
+          return formatfn ? formatfn(fmt.code) : fmt.code;
         }
         let ref_fmt = ref_id_to_fmt[x.substring(1)];
-        return `[<unrendered(${ref_fmt ? ref_fmt.code : x.substring(1)})>]`;
+        return `<unrendered(${ref_fmt ? ref_fmt.code : x.substring(1)})>`;
       }
       return x;
     })
