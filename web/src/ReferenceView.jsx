@@ -1,12 +1,11 @@
-import React from 'react';
-import { BaseComponent } from './utils/component.js';
+import React, { Component } from 'react';
 import { LangRouter, getLangId } from './utils/urls.js';
 
 import LangSelector from './LangSelector.jsx';
 import LangDetails from './LangDetails.jsx';
 import TightGrid from './TightGrid.jsx';
 
-class ReferenceView extends BaseComponent {
+class ReferenceView extends Component {
   constructor(props) {
     super(props);
 
@@ -27,17 +26,17 @@ class ReferenceView extends BaseComponent {
   }
 
   // Handlers
-  handleLangId(lang_id) {
+  handleLangId = lang_id => {
     this.setState({ lang_id: lang_id });
-  }
+  };
 
-  handleHashChange(evt) {
+  handleHashChange = evt => {
     evt.preventDefault();
     let lang_id = LangRouter.get(this.props.langs);
     if (lang_id) {
       this.setState({ lang_id: lang_id });
     }
-  }
+  };
 
   // Render
   render() {
@@ -46,11 +45,7 @@ class ReferenceView extends BaseComponent {
 
     return (
       <div className="ReferenceView widget widget2x">
-        <LangSelector
-          langs={langs}
-          lang_id={this.state.lang_id}
-          updateLangId={this.handleLangId}
-        />
+        <LangSelector langs={langs} lang_id={this.state.lang_id} updateLangId={this.handleLangId} />
         <LangDetails lang={lang} />
         <TightGrid lang={lang} />
       </div>

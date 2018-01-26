@@ -1,24 +1,23 @@
-import React from 'react';
-import { BaseComponent } from './utils/component.js';
+import React, { Component } from 'react';
 
 import './compiled/TightGrid.css';
 
 const _getKey = fmt => `${fmt.cat}-${fmt.code}`;
 const _getExpKey = fmt => `expand-${_getKey(fmt)}`;
 
-class TightGrid extends BaseComponent {
+class TightGrid extends Component {
   constructor() {
     super();
     this.state = {};
   }
 
   // Handlers
-  handleToggleExpand(evt, key, val) {
+  handleToggleExpand = (evt, key, val) => {
     evt.preventDefault();
     this.setState({ [key]: val });
-  }
+  };
 
-  toggleAllExpands(evt, val) {
+  toggleAllExpands = (evt, val) => {
     evt.preventDefault();
 
     let new_state = {};
@@ -28,7 +27,7 @@ class TightGrid extends BaseComponent {
     });
 
     this.setState(new_state);
-  }
+  };
 
   // Render
 
@@ -65,18 +64,13 @@ class TightGrid extends BaseComponent {
       }
 
       let info_link = !fmt.info ? null : (
-        <button
-          className="info-link"
-          onClick={e => this.handleToggleExpand(e, exp_key, !expanded)}
-        >
+        <button className="info-link" onClick={e => this.handleToggleExpand(e, exp_key, !expanded)}>
           (<span className="mono">{expanded ? '–' : '+'}</span> info)
         </button>
       );
 
       let info_content =
-        !fmt.info || !expanded ? null : (
-          <span className="info-content">{fmt.info}</span>
-        );
+        !fmt.info || !expanded ? null : <span className="info-content">{fmt.info}</span>;
 
       return (
         <tr className="row" key={_getKey(fmt)}>
@@ -92,10 +86,7 @@ class TightGrid extends BaseComponent {
     });
 
     let all_info_link = !has_info ? null : (
-      <button
-        className="info-link"
-        onClick={e => this.toggleAllExpands(e, !all_expanded)}
-      >
+      <button className="info-link" onClick={e => this.toggleAllExpands(e, !all_expanded)}>
         (<span className="mono">{all_expanded ? '–' : '+'}</span> infos)
       </button>
     );

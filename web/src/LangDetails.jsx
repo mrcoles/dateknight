@@ -1,10 +1,9 @@
-import React from 'react';
-import { BaseComponent } from './utils/component.js';
+import React, { Component } from 'react';
 
 import './compiled/LangDetails.css';
 import new_window_svg from './svg/new-window.svg';
 
-class LangDetails extends BaseComponent {
+class LangDetails extends Component {
   render() {
     let lang = this.props.lang;
 
@@ -12,12 +11,7 @@ class LangDetails extends BaseComponent {
       <div className={'LangDetails widget ' + (lang ? '' : 'hide')}>
         <div className="header">
           <h2>{lang.name}</h2>
-          <a
-            className="docs-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href={lang.docs}
-          >
+          <a className="docs-link" target="_blank" rel="noopener noreferrer" href={lang.docs}>
             docs
             <img
               className="svg-icon svg-new-window"
@@ -26,9 +20,7 @@ class LangDetails extends BaseComponent {
             />
           </a>
         </div>
-        <div className={'example ' + (lang.example ? '' : 'hide')}>
-          {lang.example}
-        </div>
+        <div className={'example ' + (lang.example ? '' : 'hide')}>{lang.example}</div>
       </div>
     );
   }

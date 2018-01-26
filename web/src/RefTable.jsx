@@ -1,9 +1,8 @@
-import React from 'react';
-import { BaseComponent } from './utils/component.js';
+import React, { Component } from 'react';
 
 import './compiled/RefTable.css';
 
-class RefTable extends BaseComponent {
+class RefTable extends Component {
   render() {
     let formats = this.props.formats;
     let lang = this.props.lang;

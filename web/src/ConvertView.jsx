@@ -1,5 +1,4 @@
-import React from 'react';
-import { BaseComponent } from './utils/component.js';
+import React, { Component } from 'react';
 import { convertCode } from './utils/convert.js';
 import { scrollDelayed } from './utils/scroll.js';
 import { ConvertRouter } from './utils/urls.js';
@@ -8,7 +7,7 @@ import FormatSamples from './FormatSamples.jsx';
 
 import './compiled/ConvertView.css';
 
-class ConvertView extends BaseComponent {
+class ConvertView extends Component {
   constructor(props) {
     super(props);
 
@@ -29,41 +28,41 @@ class ConvertView extends BaseComponent {
   }
 
   // Handlers
-  handleHashChange(evt) {
+  handleHashChange = evt => {
     evt.preventDefault();
     this._handleHashChange();
-  }
+  };
 
-  _handleHashChange() {
+  _handleHashChange = () => {
     let lang_id = ConvertRouter.get(this.props.langs);
     if (lang_id) {
       this._changeLangId(lang_id);
       scrollDelayed('ConvertView');
     }
-  }
+  };
 
-  handleChangeCode(evt) {
+  handleChangeCode = evt => {
     let code = evt.target.value;
     this.setState({ code: code });
-  }
+  };
 
-  handleUpdateCode(new_code) {
+  handleUpdateCode = new_code => {
     this.setState({ code: new_code });
-  }
+  };
 
-  handleChangeSelect(evt) {
+  handleChangeSelect = evt => {
     let lang_id = evt.target.value;
     ConvertRouter.go(lang_id);
-  }
+  };
 
-  handleSwap(evt, lang_id, code) {
+  handleSwap = (evt, lang_id, code) => {
     evt.preventDefault();
     ConvertRouter.go(lang_id);
-  }
+  };
 
-  handleSelectSample(sample) {
+  handleSelectSample = sample => {
     this.setState({ code: sample.code });
-  }
+  };
 
   // Helpers
   _getLang(lang_id) {

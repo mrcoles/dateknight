@@ -1,11 +1,10 @@
-import React from 'react';
-import { BaseComponent } from './utils/component.js';
+import React, { Component } from 'react';
 
 import './compiled/AutoCompleter.css';
 
 const constrain = (val, min, max) => Math.min(max, Math.max(min, val));
 
-class AutoCompleter extends BaseComponent {
+class AutoCompleter extends Component {
   constructor(props) {
     super(props);
 
@@ -27,18 +26,18 @@ class AutoCompleter extends BaseComponent {
 
   // Handlers
 
-  handleWindowClick(evt) {
+  handleWindowClick = evt => {
     // HACK - if clicked outside of our elt, then reset the state
     if (!this._isChildOfClass(evt.target, 'AutoCompleter')) {
       this.setState(this._emptyState());
     }
-  }
+  };
 
-  handleInputKeyDown(evt) {
+  handleInputKeyDown = evt => {
     this._getKeys(evt);
-  }
+  };
 
-  handleInputKeyUp(evt) {
+  handleInputKeyUp = evt => {
     let keys = this._getKeys(evt);
 
     if (keys.esc || (keys.enter && this.state.active_pos === -1)) {
@@ -65,22 +64,22 @@ class AutoCompleter extends BaseComponent {
     if (keys.enter) {
       this._applyMatch(matches[new_pos]);
     }
-  }
+  };
 
-  handleInputChange(evt) {
+  handleInputChange = evt => {
     let onChange = this.props.onChange;
     if (onChange) {
       onChange(evt);
     }
-  }
+  };
 
-  handleMatchMouseOver(evt, i) {
+  handleMatchMouseOver = (evt, i) => {
     this.setState({ active_pos: i });
-  }
+  };
 
-  handleMatchClick(evt, match, i) {
+  handleMatchClick = (evt, match, i) => {
     this._applyMatch(match);
-  }
+  };
 
   // Helpers
 

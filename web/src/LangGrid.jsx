@@ -1,9 +1,8 @@
-import React from 'react';
-import { BaseComponent } from './utils/component.js';
+import React, { Component } from 'react';
 
 import './compiled/LangGrid.css';
 
-class LangGrid extends BaseComponent {
+class LangGrid extends Component {
   render() {
     let lang = this.props.lang;
 
@@ -16,10 +15,7 @@ class LangGrid extends BaseComponent {
         last_cat = fmt.cat;
         group_counter = 0;
         rows.push(
-          <div
-            className="row row-header"
-            key={fmt.cat + '-' + fmt.code + '-header'}
-          >
+          <div className="row row-header" key={fmt.cat + '-' + fmt.code + '-header'}>
             {fmt.cat}
           </div>
         );

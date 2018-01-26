@@ -1,5 +1,4 @@
-import React from 'react';
-import { BaseComponent } from './utils/component.js';
+import React, { Component } from 'react';
 import moment from 'moment';
 
 import './compiled/FormatSamples.css';
@@ -47,7 +46,7 @@ const SAMPLES = [
   }
 ];
 
-class FormatSamples extends BaseComponent {
+class FormatSamples extends Component {
   constructor(props) {
     super(props);
 
@@ -55,11 +54,11 @@ class FormatSamples extends BaseComponent {
   }
 
   // Handlers
-  handleTrClick(evt, sample) {
+  handleTrClick = (evt, sample) => {
     evt.preventDefault();
 
     this.props.onSelectSample(sample);
-  }
+  };
 
   // Render
   render() {
