@@ -141,7 +141,7 @@ const codeForLang = (global_code, id_to_fmt, ref_id_to_fmt) => {
     .map(x => {
       if (x.startsWith('$')) {
         let fmt = id_to_fmt[x.substring(1)];
-        if (fmt) {
+        if (fmt && !fmt.unrenderable) {
           return fmt.code;
         }
         let ref_fmt = ref_id_to_fmt[x.substring(1)];

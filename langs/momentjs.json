@@ -190,7 +190,8 @@
       "cat": "timezone",
       "id": "Z",
       "code": "z",
-      "example": "EST CST ... MST PST\nNote: as of 1.6.0, the z/zz format tokens have been deprecated from plain moment objects. Read more about it here. However, they do work if you are using a specific time zone with the moment-timezone addon."
+      "example": "EST CST ... MST PST\nNote: as of 1.6.0, the z/zz format tokens have been deprecated from plain moment objects. Read more about it here. However, they do work if you are using a specific time zone with the moment-timezone addon.",
+      "unrenderable": true
     },
     {
       "cat": "timezone",
