@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { convertCode } from './utils/convert.js';
-import { scrollDelayed } from './utils/scroll.js';
-import { ConvertRouter } from './utils/urls.js';
-import AutoCompleter from './AutoCompleter.jsx';
-import FormatSamples from './FormatSamples.jsx';
+import { convertCode } from './utils/convert';
+import { scrollDelayed } from './utils/scroll';
+import { ConvertRouter } from './utils/urls';
+import AutoCompleter from './AutoCompleter';
+import FormatSamples from './FormatSamples';
 
 import './compiled/ConvertView.css';
 

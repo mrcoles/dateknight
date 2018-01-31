@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { scrollDelayed } from './utils/scroll.js';
-import { LangRouter, ConvertRouter, getLangId } from './utils/urls.js';
+import { scrollDelayed } from './utils/scroll';
+import { LangRouter, ConvertRouter, getLangId } from './utils/urls';
 
 import './compiled/LangSelector.css';
 

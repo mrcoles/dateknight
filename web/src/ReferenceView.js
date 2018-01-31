@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { LangRouter, getLangId } from './utils/urls.js';
+import { LangRouter, getLangId } from './utils/urls';
 
-import LangSelector from './LangSelector.jsx';
-import LangDetails from './LangDetails.jsx';
-import TightGrid from './TightGrid.jsx';
+import LangSelector from './LangSelector';
+import LangDetails from './LangDetails';
+import TightGrid from './TightGrid';
 
 class ReferenceView extends Component {
   constructor(props) {

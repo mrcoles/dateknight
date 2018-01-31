@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 import './compiled/App.css';
-import ForkMe from './ForkMe.jsx';
-import ReferenceView from './ReferenceView.jsx';
-import ConvertView from './ConvertView.jsx';
-import Footer from './Footer.jsx';
+import ForkMe from './ForkMe';
+import ReferenceView from './ReferenceView';
+import ConvertView from './ConvertView';
+import Footer from './Footer';
 
-import _langs from './data/langs.js';
+import _langs from './data/langs';
 
 const LANGS = _langs.filter(x => x.formats !== undefined);
 
