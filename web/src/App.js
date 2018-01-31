@@ -30,7 +30,7 @@ class App extends Component {
             <a href="https://mrcoles.com/dateknight/">Date Knight</a>
             <small>
               A datetime string formatting{' '}
-              <span className="nowrap">reference &amp; transcoder</span>
+              <span className="nowrap">reference &amp; translator</span>
             </small>
           </h1>
           <ReferenceView langs={langs} />

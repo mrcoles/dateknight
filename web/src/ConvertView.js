@@ -93,7 +93,7 @@ class ConvertView extends Component {
     let to_langs = this._getOtherLangs(this.state.from_lang_id);
     let { converted_values, global_array } = convertCode(code, from_lang, to_langs);
 
-    let anchor_link = `#transcode/${from_lang.id}`;
+    let anchor_link = `#translate/${from_lang.id}`;
 
     let ac_rows = from_lang.formats;
     let ac_fieldnames = ['cat', 'code', 'example', 'info'];
@@ -146,7 +146,7 @@ class ConvertView extends Component {
     return (
       <div className="ConvertView widget widget2x">
         <h2>
-          DateTime Transcoder
+          DateTime Translator
           <a className="anchor" href={anchor_link}>
             ¶
           </a>

@@ -75,7 +75,7 @@ class FormatSamples extends Component {
         <h2>{lang.name} Examples</h2>
         <p>
           The current date and time is formatted for the following examples below. Tap on one to
-          populate the transcoder.
+          populate the translator.
         </p>
         <table className="widget">
           <tbody>
