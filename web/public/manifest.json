@@ -1,6 +1,6 @@
 {
     "name": "Date Knight",
-    "short_name": "Date Knight: a universal datetime string formatting reference",
+    "short_name": "Date Knight: a datetime string formatting reference & transcoder",
     "icons": [
         {
             "src": "/dateknight/android-chrome-192x192.png",

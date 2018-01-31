@@ -17,13 +17,13 @@ export const LangRouter = {
 };
 
 export const ConvertRouter = {
-  format: id => `#convert/${id}`,
+  format: id => `#transcode/${id}`,
   get: (langs, no_default_id) => {
     let default_id = no_default_id === true ? undefined : DEFAULT_LANG_ID;
     let hash = read_hash();
     let sp = hash.split('/');
 
-    if (sp.length <= 2 && sp[0] === 'convert') {
+    if (sp.length <= 2 && sp[0] === 'transcode') {
       let id = sp[1] && langs.find(x => x.id === sp[1]) ? sp[1] : default_id;
 
       return id;

@@ -25,7 +25,7 @@ class LangSelector extends Component {
     return (
       <div className="LangSelector widget">
         <a className="right" href={convert_url} onClick={this.handleConvertClick}>
-          Converter
+          Transcoder →
         </a>
         <span className="label">Choose language/library:</span>
         <span className="options">

@@ -29,7 +29,8 @@ class App extends Component {
           <h1>
             <a href="https://mrcoles.com/dateknight/">Date Knight</a>
             <small>
-              A universal date time string <span className="nowrap">formatting reference</span>
+              A datetime string formatting{' '}
+              <span className="nowrap">reference &amp; transcoder</span>
             </small>
           </h1>
           <ReferenceView langs={langs} />

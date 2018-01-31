@@ -1,7 +1,7 @@
 {
   "name": "dateknight",
   "version": "1.0.0",
-  "description": "Date Knight - a universal date time string formatting reference",
+  "description": "Date Knight - a datetime string formatting reference & transcoder",
   "main": "scripts/copy_json.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

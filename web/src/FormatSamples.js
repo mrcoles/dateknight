@@ -75,7 +75,7 @@ class FormatSamples extends Component {
         <h2>{lang.name} Examples</h2>
         <p>
           The current date and time is formatted for the following examples below. Tap on one to
-          populate the converter.
+          populate the transcoder.
         </p>
         <table className="widget">
           <tbody>
@@ -94,6 +94,10 @@ class FormatSamples extends Component {
         <p className="disclaimer">
           *The codes are converted into MomentJs to render the live examples. Any unique codes that
           do not map to Moment are displayed with an unrendered message.
+          <br />
+          <br />
+          *If you would like to improve this tool, please take a look at the{' '}
+          <a href="https://github.com/mrcoles/dateknight">DateKnight repo on github</a>.
         </p>
       </div>
     );
