@@ -10,6 +10,9 @@ const footer = props => {
         View slides: <a href="DateKnight.pdf">pdf</a>
         <br />
         Made with ♥ in NYC <br />
+        <a href="https://mrcoles.com">mrcoles.com</a> /{' '}
+        <a href="https://twitter.com/lethys">@lethys</a>
+        <br />
         &copy; {this_year}
       </p>
     </footer>
