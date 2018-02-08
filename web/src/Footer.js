@@ -11,7 +11,8 @@ const footer = props => {
         <br />
         Made with ♥ in NYC <br />
         <a href="https://mrcoles.com">mrcoles.com</a> /{' '}
-        <a href="https://twitter.com/lethys">@lethys</a>
+        <a href="https://twitter.com/lethys">@lethys</a> /{' '}
+        <a href="https://paypal.me/mrcoles">donate</a>
         <br />
         &copy; {this_year}
       </p>
