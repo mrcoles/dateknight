@@ -1,9 +1,6 @@
-
-Date Knight
-===========
+# Date Knight
 
 A universal date time formatting reference.
-
 
 ## Running locally
 
@@ -12,7 +9,7 @@ A react create app project exists underneath `web/`. In order to run it, you nee
 1.  Copy the json files into the web project:
 
     ```
-    bash copy_json.sh
+    node scripts/copy_json.js
     ```
 
 2.  Initialize the project:

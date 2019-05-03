@@ -5,6 +5,9 @@ const util = require('./util');
 
 const EXPORT_DIR = './web/src/data/';
 
+if (!fs.existsSync(EXPORT_DIR)){
+    fs.mkdirSync(EXPORT_DIR);
+}
 
 // copy formats
 
